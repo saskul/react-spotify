@@ -6,8 +6,8 @@ const cors = require("cors");
 const bodyParser = require("body-parser");
 
 const {
+	  HOST_PORT,
 	  PORT,
-	  REACT_APP_PORT,
 	  SPOTIFY_WEB_API,
 	  SPOTIFY_CLIENT_ID,
 	  SPOTIFY_SECRET,
@@ -33,13 +33,13 @@ app.get('/authorize', (req, res) => {
 });
 
 app.get('/develop', (req, res) => {
-    res.redirect(`http://localhost:${REACT_APP_PORT}?code=${req.query.code}`);
+    res.redirect(`http://localhost:${PORT}?code=${req.query.code}`);
 });
 
 app.get('/', (req, res) => {
 	  res.send("Hello, world!");
 });
 
-app.listen(PORT, () => {
-	  console.log(`Server is listening on port ${PORT}`);
+app.listen(HOST_PORT, () => {
+	  console.log(`Server is listening on port ${HOST_PORT}`);
 });

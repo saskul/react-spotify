@@ -28,7 +28,7 @@
   "scripts": {
     "dev": "nodemon . NODE_ENV='develop'",
     "serve": "node . NODE_ENV='production'",
-    "start": "react-scripts start PORT=3000",
+    "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
