@@ -1,4 +1,5 @@
 const express = require('express');
+const authController = express.Router();
 
 const {
 	  PORT,
@@ -9,8 +10,6 @@ const {
 	  SPOTIFY_REDIRECT_URI_DEV,
 	  SPOTIFY_SCOPES
 } = process.env;
-
-const authController = express.Router();
 
 authController.get('/develop', (req, res) => {
 	  res.redirect(

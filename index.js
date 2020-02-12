@@ -5,7 +5,7 @@ const axios = require('axios');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const path = require('path');
-const authController = require('./controllers/auth');
+const api = require('./api');
 
 const { HOST_PORT, PORT } = process.env;
 
@@ -13,7 +13,7 @@ app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json())
 
-app.use('/auth', authController);
+app.use('/api', api);
 
 app.get('/develop', (req, res) => {
     res.redirect(`http://localhost:${PORT}?code=${req.query.code}`);
