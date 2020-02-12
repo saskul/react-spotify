@@ -1,35 +1,37 @@
 import React from 'react';
-import logo from './logo.svg';
-import { connect } from 'react-redux';
-import { getNews } from './actions';
+import {
+  BrowserRouter as Router,
+  // Switch,
+  // Route,
+  // Link
+} from 'react-router-dom';
+// import { connect } from 'react-redux';
+import withAuth from './components/shared/hoc/withAuth';
+import { AuthState } from './types';
 import './App.scss';
+import UIImg from './static/ui.png';
 
-type Props = {
-  news: any,
-  getNews(): any
-};
 type State = {};
 
-class App extends React.PureComponent<Props, State> {
+class App extends React.PureComponent<AuthState, State> {
   componentDidMount() {
-    this.props.getNews();
+    if (process.env.REACT_APP_DISABLE_AUTH === 'true') {
+      console.group();
+      console.warn('Authentication is disabled for development purposes');
+      console.warn('Change value of REACT_APP_DISABLE_AUTH to change this behaviour');
+      console.groupEnd();
+    }
   }
+
   render() {
-    console.log(this.props.news)
     return (
-      <div className="app">
-        App
-      </div>
+      <Router>
+        <div className="app">
+          <img alt="UI concept" src={UIImg} />
+        </div>
+      </Router>
     );
   }
 }
 
-const mapStateToProps = (state: Props) => ({
-  news: state.news
-});
-
-const mapDispatchToProps = {
-  getNews
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default withAuth(App);

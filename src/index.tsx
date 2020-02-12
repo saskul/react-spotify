@@ -3,16 +3,16 @@ import ReactDOM from 'react-dom';
 import { createStore, applyMiddleware, compose } from 'redux';
 import createSagaMiddleware from 'redux-saga';
 import { Provider } from 'react-redux';
-import { createLogger } from 'redux-logger';
+// import { createLogger } from 'redux-logger';
 import reducer from './reducers';
 import saga from './sagas';
 import App from './App';
 
 const sagaMiddleware = createSagaMiddleware();
-const logger = createLogger({
-  duration: true,
-  timestamp: true
-});
+// const logger = createLogger({
+//   duration: true,
+//   timestamp: true
+// });
 
 const composeEnhancers = window['__REDUX_DEVTOOLS_EXTENSION_COMPOSE__'] || compose;
 
@@ -21,7 +21,7 @@ const store = createStore(
    composeEnhancers(
     applyMiddleware(
       sagaMiddleware,
-      logger
+      // logger
      )
    )
 );

@@ -1,28 +1,27 @@
-# React Spotify
+# Winampify
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using `--template typescript`
 #### Goals:
 *Deadline: 12.02.2020 11:59 PM*
-- [ ] Integrate application with Spotify Web API.
+- [X] Integrate application with Spotify Web API.
 - [ ] Apply styling as close as possible to Spotify.
 - [ ] ***Apply styling as close as possible to Winamp.***
 - [ ] Make content displayable and playable.
-- [ ] Apply application state (use either Redux library or similar or React mechanisms like
+- [X] Apply application state (use either Redux library or similar or React mechanisms like
 Context API or hooks).
 - [ ] Visualise data loading states.
 - [ ] Add unit tests (no need to apply coverage for edge cases, focus on main possible
 issues).
 - [ ] Add at least one UI test for a happy path related scenario.
-- [ ] It must be possible to run the app by doing just yarn &amp;&amp; yarn start (of course,
+- [X] It must be possible to run the app by doing just yarn &amp;&amp; yarn start (of course,
 you can use npm install &amp;&amp; npm start).
 - [ ] ***Implement separate “User profile” screen (details to display are free of choice) and
 apply routing to the application.***
 
 ## Dependencies
 - React.js
+- Typescript
 - Node.js
 - Express.js
-- MongoDB
-- Mongoose 
 - Node-sass
 - Redux 
 - Redux-saga
@@ -56,6 +55,39 @@ apply routing to the application.***
 ---
 
 ### Server
+#### Environment variables
+```sh
+# CONFIG
+HOST_PORT                 = 8080
+PORT                      = 3000
+
+# SPOTIFY WEB API
+REACT_APP_SPOTIFY_WEB_API = 'https://accounts.spotify.com'
+REACT_APP_CLIENT_ID       = $SPOTIFY_CLIENT_ID
+REACT_APP_CLIENT_SECRET   = $SPOTIFY_CLIENT_SECRET
+REACT_APP_WINAMPIFY_ROOT  = 'https://winampify.com'
+REACT_APP_WINAMPIFY       = 'https://winampify.com/api/auth'
+REACT_APP_WINAMPIFY_DEV   = 'https://winampify.com/api/auth/develop'
+REACT_APP_DISABLE_AUTH    = 'true' # any other value enables auth
+
+SPOTIFY_WEB_API           = 'https://accounts.spotify.com/authorize'
+SPOTIFY_CLIENT_ID         = $SPOTIFY_CLIENT_ID
+SPOTIFY_SECRET            = $SPOTIFY_CLIENT_SECRET
+SPOTIFY_REDIRECT_URI      = 'https://winampify.com'
+SPOTIFY_REDIRECT_URI_DEV  = 'https://winampify.com/develop'
+
+# API
+API_AUTH                  = 'https://winampify.com/api/auth'
+API_AUTH_DEV              = 'https://winampify.com/api/auth/develop'
+```
+
+#### Scripts
+```javascript
+    "dev": "nodemon . NODE_ENV='develop'",      // Run server in development mode
+    "serve": "node . NODE_ENV='production'",    // Run server in production mode
+    "start": "react-scripts start",             // Start local client server
+    "build": "react-scripts build",             // Generate production build with CRA
+```
 
 ---
 

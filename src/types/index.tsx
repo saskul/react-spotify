@@ -5,3 +5,34 @@ export interface News {
   title: string,
   content: string
 };
+
+export interface User {
+  username: string
+};
+
+export const GET_TOKEN = 'GET_TOKEN';
+export const SET_TOKEN = 'SET_TOKEN';
+export const REFRESH_TOKEN = 'REFRESH_TOKEN';
+export const AUTH_FAILURE = 'AUTH_FAILURE';
+
+export const ERROR = 'ERROR';
+export const CLEAR_ERRORS = 'CLEAR_ERRORS';
+
+export interface GetTokenAction {
+  type: typeof GET_TOKEN,
+  code: string
+};
+
+export interface Token {
+  access_token: string,
+  token_type: string,
+  expires_in: number,
+  refresh_token: string,
+  scope: string
+}
+
+export interface AuthState {
+  token?: Token,
+  user?: User
+};
+

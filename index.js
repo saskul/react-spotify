@@ -1,35 +1,33 @@
-require("dotenv").config();
-const express = require("express");
+require('dotenv').config();
+const express = require('express');
 const app = express();
-const createURI = require("./src/helpers/createURI");
+const axios = require('axios');
+const cors = require('cors');
+const bodyParser = require('body-parser');
+const path = require('path');
+const api = require('./api');
 
-const {
-  PORT,
-  SPOTIFY_WEB_API,
-  SPOTIFY_CLIENT_ID,
-  SPOTIFY_SECRET,
-  SPOTIFY_REDIRECT_URI,
-  SPOTIFY_SCOPES
-} = process.env;
+const { HOST_PORT, PORT } = process.env;
 
-app.get('/authorize', (req, res) => {
-  const uri = createURI(SPOTIFY_WEB_API, {
-    client_id: SPOTIFY_CLIENT_ID,
-    response_type: 'code',
-    redirect_uri: SPOTIFY_REDIRECT_URI,
-    // state: 'TO-DO: set cookie',
-    scope: SPOTIFY_SCOPES
-  });
-  fetch(uri)
-  .then(result => result.json())
-  .then(result => res.json(result))
-  .catch(err => res.status(404).json({ error: err }))
+app.use(cors());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json())
+
+app.use('/api', api);
+app.use(express.static(path.join(__dirname, 'build')));
+
+app.get('/develop', (req, res) => {
+	    res.redirect(`http://localhost:${PORT}?code=${req.query.code}`);
 });
+	app.get('/', (req, res) => {
+		  if (req.query.code) {
+			      res.redirect(`?code=${req.query.code}`);
+			    } else {
+				        res.redirect(proces.env.REACT_APP_WINAMPIFY);
+				      }
+	});
 
-app.get('/', (req, res) => {
-  res.send("Hello, world!");
-});
+	app.listen(HOST_PORT, () => {
+			  console.log(`Server is listening on port ${HOST_PORT}`);
+	});
 
-app.listen(PORT, () => {
-  console.log(`Server is listening on port ${PORT}`);
-});
