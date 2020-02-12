@@ -26,7 +26,9 @@
     "typescript": "^3.7.5"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "dev": "nodemon . NODE_ENV='develop'",
+    "serve": "node . NODE_ENV='production'",
+    "start": "react-scripts start PORT=3000",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
