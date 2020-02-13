@@ -12,7 +12,6 @@ import print from './helpers/print';
 import {
   Album,
   Artist,
-  BottomBar,
   BrowserList,
   Details,
   Equalizer,
@@ -20,8 +19,7 @@ import {
   Player,
   Playlist,
   Search,
-  TopBar,
-  UserProfile
+  TopBar
 } from './components';
 import withAuth from './components/shared/hoc/withAuth';
 import withUIHelp from './components/shared/hoc/withUIHelp';

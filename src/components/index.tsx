@@ -1,6 +1,5 @@
 import Album from './Album';
 import Artist from './Artist';
-import BottomBar from './BottomBar';
 import BrowserList from './BrowserList';
 import Details from './Details';
 import Equalizer from './Equalizer';
@@ -14,7 +13,6 @@ import UserProfile from './UserProfile';
 export {
   Album,
   Artist,
-  BottomBar,
   BrowserList,
   Details,
   Equalizer,
