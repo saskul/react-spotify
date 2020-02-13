@@ -143,4 +143,4 @@ should be displayed (just like with playlists in “Categories”).
 ---
 
 ### Styling
-> The themes functionality was based on the tutorial made by [Jason McAffe](https://www.google.com/search?q=themes+scss+react&oq=themes+scss+react&aqs=chrome..69i57j35i39j0l6.7231j0j7&sourceid=chrome&ie=UTF-8).
+> The themes functionality was based on the tutorial made by [Jason McAffe](https://medium.com/@jasonlmcaffee/theming-with-react-and-sass-c7a6882fd26b).

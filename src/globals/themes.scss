@@ -1,0 +1,11 @@
+@mixin winamp_theme(){
+ .winamp_theme & {
+   @content;
+ }
+}
+
+@mixin spotify_theme(){
+ .spotify_theme & {
+   @content;
+ }
+}
