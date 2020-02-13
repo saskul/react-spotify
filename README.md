@@ -113,29 +113,17 @@ API_AUTH_DEV              = 'https://winampify.com/api/auth/develop'
 ---
 
 ### Components 
-#### TopBar
+##### TopBar
+> Navigation into user profile and change theme button
+
+##### Search 
 > Containing search component where user can search for artists tracks etc.
 
-#### MainContent
-> Displaying search results or category contents or any other content
-not mentioned elsewhere.
+##### BrowserList
+> Displaying search results in a list-like fashion.
 
-#### BottomBar
-> With player, after clicking on track user should be able to listen a song
-(demo 30s).
-
-#### Sidebar
-> Containing two tabs/buttons: “Categories” and “New Releases”
-
-##### Categories
-> After clicking on “Categories” users should be able to see a list
-of categories in Main Content (same as in real Spotify app - matrix/grid). Also
-after clicking on category user should be able to see playlists and their tracks
-(after clicking on the playlist).
-
-##### NewReleases
-> After clicking on “New Releases” albums and their tracks
-should be displayed (just like with playlists in “Categories”).
+##### Sidebar
+> Consists of Artist, Album, Search and Details, all connected to logged-in user playlists.
 
 #### UserProfile
 > View displaying user details

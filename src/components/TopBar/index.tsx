@@ -7,7 +7,7 @@ type State = {};
 class TopBar extends React.Component<Props, State> {
   render() {
     return (
-      <div>TopBar</div>
+      <div className="top-bar">TopBar</div>
     );
   }
 }

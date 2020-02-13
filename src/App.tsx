@@ -9,8 +9,20 @@ import { compose } from 'redux';
 import { AuthState } from './types';
 import './App.scss';
 import print from './helpers/print';
-import Layout from './components/Layout';
-import BottomBar from './components/BottomBar';
+import {
+  Album,
+  Artist,
+  BottomBar,
+  BrowserList,
+  Details,
+  Equalizer,
+  Layout,
+  Player,
+  Playlist,
+  Search,
+  TopBar,
+  UserProfile
+} from './components';
 import withAuth from './components/shared/hoc/withAuth';
 import withUIHelp from './components/shared/hoc/withUIHelp';
 import withTheme from './components/shared/hoc/withTheme';
@@ -31,15 +43,15 @@ class App extends React.PureComponent<AuthState, State> {
       <Router>
         <div className="app">
           <Layout
-            TopBar={<BottomBar />}
-            Player={<BottomBar />}
-            Playlist={<BottomBar />}
-            Equalizer={<BottomBar />}
-            BrowserList={<BottomBar />}
-            Artist={<BottomBar />}
-            Album={<BottomBar />}
-            Search={<BottomBar />}
-            Details={<BottomBar />} />
+            TopBar={<TopBar />}
+            Player={<Player />}
+            Playlist={<Playlist />}
+            Equalizer={<Equalizer />}
+            BrowserList={<BrowserList />}
+            Artist={<Artist />}
+            Album={<Album />}
+            Search={<Search />}
+            Details={<Details />} />
         </div>
       </Router>
     );
