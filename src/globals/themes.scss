@@ -1,10 +1,15 @@
+@import './winamp_theme';
+@import './spotify_theme';
+
 @mixin winamp_theme(){
+ @extend .winamp !optional;
  .winamp_theme & {
    @content;
  }
 }
 
 @mixin spotify_theme(){
+  @extend .spotify !optional;
  .spotify_theme & {
    @content;
  }

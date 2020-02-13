@@ -7,7 +7,7 @@ type State = {};
 class Player extends React.Component<Props, State> {
   render() {
     return (
-      <div className="player">Player</div>
+      <div className="player --underlight-font">Player</div>
     );
   }
 }

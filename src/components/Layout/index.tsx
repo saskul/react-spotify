@@ -1,4 +1,5 @@
 import React from 'react';
+import text from '../../globals/text';
 import './Layout.scss';
 
 type Props = {
@@ -29,20 +30,34 @@ class Layout extends React.Component<Props, State> {
     } = this.props;
     return (
       <div className="grid --column">
-        <div className="grid__row --collapsed-height"><div style={{ height: '20px'}}>{TopBar}</div></div>
-        <div className="grid__row">
-          <div className="grid__column">
+        <div className="grid__row --collapsed-height --no-border">{TopBar}</div>
+        <div className="grid__row --no-border">
+          <div className="grid__column --no-border">
             <div className="grid__row">
               {Player}
             </div>
+            <div className="grid__row --collapsed-height --no-border --padded">
+              <div className="line-through" />
+              <div>
+                <b>{text.playlist.toUpperCase()}</b>
+              </div>
+              <div className="line-through" />
+            </div>
             <div className="grid__row">
               {Playlist}
+            </div>
+            <div className="grid__row --collapsed-height --no-border --padded">
+              <div className="line-through" />
+              <div>
+                <b>{text.equalizer.toUpperCase()}</b>
+              </div>
+              <div className="line-through" />
             </div>
             <div className="grid__row">
               {Equalizer}
             </div>
           </div>
-          <div className="grid__row">
+          <div className="grid__row --no-border">
             <div className="grid__column">
               {BrowserList}
             </div>

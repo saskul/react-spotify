@@ -1,7 +1,11 @@
+@import './globals/themes';
+
 .app {
+  @include winamp-theme() {
+    color: #DCE6EA;
+  }
   width: 100vw;
   height: 100vh;
-  background-color: black;
 }
 
 body {
