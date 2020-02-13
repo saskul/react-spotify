@@ -9,12 +9,13 @@ import {
 import withAuth from './components/shared/hoc/withAuth';
 import { AuthState } from './types';
 import './App.scss';
-import UIImg from './static/ui.png';
 import print from './helpers/print';
+import withUIHelp from './components/shared/hoc/withUIHelp';
 
 type State = {};
 
 class App extends React.PureComponent<AuthState, State> {
+
   componentDidMount() {
     if (process.env.REACT_APP_DISABLE_AUTH === 'true') {
       print.authIsDisabled();
@@ -25,11 +26,10 @@ class App extends React.PureComponent<AuthState, State> {
     return (
       <Router>
         <div className="app">
-          <img alt="UI concept" src={UIImg} />
         </div>
       </Router>
     );
   }
 }
 
-export default withAuth(App);
+export default withUIHelp(withAuth(App));
