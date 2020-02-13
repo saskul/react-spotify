@@ -3,7 +3,8 @@ import {
   GET_TOKEN,
   SET_TOKEN,
   REFRESH_TOKEN,
-  AUTH_FAILURE
+  AUTH_FAILURE,
+  GET_USER
 } from '../types';
 import { authService } from '../services';
 
@@ -11,6 +12,7 @@ export function* fetchToken({ type, code }: any) {
   try {
     const token = yield authService.getToken(code);
     yield put({ type: SET_TOKEN, token });
+    yield put({ type: GET_USER, token });
   } catch (error) {
     yield put({ type: AUTH_FAILURE });
   }

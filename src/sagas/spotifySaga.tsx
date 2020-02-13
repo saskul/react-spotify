@@ -11,7 +11,8 @@ export function* fetchUserPlaylists({ type, token }: any) {
     const playlists = yield spotifyService.getUserPlaylists(token);
     yield put({ type: SET_USER_PLAYLISTS, playlists });
   } catch (error) {
-    yield put({ type: SPOTIFY_FAILURE });
+    console.error(error)
+    yield put({ type: SPOTIFY_FAILURE, error });
   }
 }
 

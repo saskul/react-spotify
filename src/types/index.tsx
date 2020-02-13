@@ -38,4 +38,8 @@ export interface AuthState {
 
 export const GET_USER_PLAYLISTS = 'GET_USER_PLAYLISTS';
 export const SET_USER_PLAYLISTS = 'SET_USER_PLAYLISTS';
-export const SPOTIFY_FAILURE = 'SPOTIFY_FAILURE'
+export const SPOTIFY_FAILURE = 'SPOTIFY_FAILURE';
+
+export const GET_USER = 'GET_USER';
+export const SET_USER = 'SET_USER';
+export const USER_FAILURE = 'USER_FAILURE';

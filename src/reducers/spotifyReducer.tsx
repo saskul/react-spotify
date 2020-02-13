@@ -24,7 +24,7 @@ const reducer = (state = InitialState, action: ActionTypes) => {
      case GET_USER_PLAYLISTS:
         return { loading: true };
      case SET_USER_PLAYLISTS:
-        return { ...state, playlists: action.playlists }
+        return { ...state, playlists: action.playlists, loading: false }
      case SPOTIFY_FAILURE:
         return { ...state, error: action.error, loading: false }
      default:

@@ -27,7 +27,7 @@ export function getToken(code) {
 }
 
 export function refreshToken(refresh_token) {
-  axios({
+  return axios({
       method: 'post',
       url: `${process.env.REACT_APP_SPOTIFY_WEB_API}/api/token`,
       data: qs.stringify({
@@ -35,5 +35,6 @@ export function refreshToken(refresh_token) {
         refresh_token: refresh_token,
       }),
       headers: AUTH_HEADERS
-  }).then(response => response.data);
+  })
+  .then(response => response.data);
 }
