@@ -1,6 +1,17 @@
 import axios from 'axios';
 import qs from 'qs';
 
+export function getAuthHeader() {
+  return 'Basic ' + (
+    new Buffer(process.env.REACT_APP_CLIENT_ID + ':' + process.env.REACT_APP_CLIENT_SECRET).toString('base64')
+  );
+}
+
+export const AUTH_HEADERS = {
+  'Authorization': getAuthHeader(),
+  'Content-Type':'application/x-www-form-urlencoded'
+}
+
 export function getToken(code) {
   return axios({
     method: 'post',
@@ -10,12 +21,7 @@ export function getToken(code) {
       code: code,
       redirect_uri: `${process.env.REACT_APP_WINAMPIFY_ROOT}${process.env.NODE_ENV === 'development' ? '/develop' : ''}`
     }),
-    headers: {
-      'Authorization': 'Basic ' + (
-        new Buffer(process.env.REACT_APP_CLIENT_ID + ':' + process.env.REACT_APP_CLIENT_SECRET).toString('base64')
-       ),
-      'Content-Type':'application/x-www-form-urlencoded'
-    }
+    headers: AUTH_HEADERS
   })
   .then(response => response.data);
 }
@@ -28,11 +34,6 @@ export function refreshToken(refresh_token) {
         grant_type: 'refresh_token',
         refresh_token: refresh_token,
       }),
-      headers: {
-        'Authorization': 'Basic ' + (
-          new Buffer(process.env.REACT_APP_CLIENT_ID + ':' + process.env.REACT_APP_CLIENT_SECRET).toString('base64')
-         ),
-        'Content-Type':'application/x-www-form-urlencoded'
-      }
+      headers: AUTH_HEADERS
   }).then(response => response.data);
 }
