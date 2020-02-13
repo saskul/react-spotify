@@ -113,6 +113,9 @@ API_AUTH_DEV              = 'https://winampify.com/api/auth/develop'
 ---
 
 ### Components 
+##### Layout
+> Component which puts children in correct places using flex-boxes.
+
 ##### TopBar
 > Navigation into user profile and change theme button
 
