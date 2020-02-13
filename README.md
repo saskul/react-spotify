@@ -46,15 +46,18 @@ apply routing to the application.***
         - shared
             - hoc
     - [store](#redux-store)
-        - [constants](#constants)
-        - [actions](#actions)
-        - [sagas](#sagas) 
+        - [state](#state)
     - [`App.tsx`](#react-app)
 - [`index.js`](#server)
 
 ---
 
 ### Server
+#### Authentication
+> Authentication is handled entirely by Spotify Web API. Once user is authenticated by the platform, his token is stored within redux store. Each consecutive request will refresh the token.
+
+#### Development
+> To start developing fill the [environment variables](#environment-variables), and simply `npm install && npm start`
 #### Environment variables
 ```sh
 # CONFIG
@@ -94,9 +97,18 @@ API_AUTH_DEV              = 'https://winampify.com/api/auth/develop'
 ### React App
 
 #### Redux Store
-##### Constants 
-##### Actions
-##### Sagas
+##### State
+- auth
+    - loading
+    - token
+- spotify
+    - loading
+    - playlists
+- user
+    - loading
+    - data
+- theme
+    - current
 
 ---
 
