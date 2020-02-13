@@ -1,16 +1,17 @@
-import React from 'react';
+import React   from 'react';
 import {
   BrowserRouter as Router,
   // Switch,
   // Route,
   // Link
 } from 'react-router-dom';
-// import { connect } from 'react-redux';
-import withAuth from './components/shared/hoc/withAuth';
+import { compose } from 'redux';
 import { AuthState } from './types';
 import './App.scss';
 import print from './helpers/print';
+import withAuth from './components/shared/hoc/withAuth';
 import withUIHelp from './components/shared/hoc/withUIHelp';
+import withTheme from './components/shared/hoc/withTheme';
 
 type State = {};
 
@@ -23,6 +24,7 @@ class App extends React.PureComponent<AuthState, State> {
   }
 
   render() {
+
     return (
       <Router>
         <div className="app">
@@ -32,4 +34,8 @@ class App extends React.PureComponent<AuthState, State> {
   }
 }
 
-export default withUIHelp(withAuth(App));
+export default compose(
+  withTheme,
+  withUIHelp,
+  withAuth
+)(App);

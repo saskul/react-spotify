@@ -43,3 +43,5 @@ export const SPOTIFY_FAILURE = 'SPOTIFY_FAILURE';
 export const GET_USER = 'GET_USER';
 export const SET_USER = 'SET_USER';
 export const USER_FAILURE = 'USER_FAILURE';
+
+export const CHANGE_THEME = 'CHANGE_THEME';
