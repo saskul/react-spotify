@@ -1,13 +1,5 @@
-import { GET_TOKEN, SET_TOKEN, REFRESH_TOKEN } from '../types';
+import { getToken, setToken, refreshToken } from './authActions';
 
-export const getToken = ({ code }) => ({
-  type: GET_TOKEN, code
-});
+const authActions = { getToken, setToken, refreshToken };
 
-export const setToken = ({ token }) => ({
-  type: SET_TOKEN, token
-});
-
-export const refreshToken = ({ refresh_token }) => ({
-  type: REFRESH_TOKEN, refresh_token
-});
+export { authActions };

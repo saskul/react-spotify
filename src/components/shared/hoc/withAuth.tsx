@@ -1,11 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { AuthState } from '../../../types';
-import { getToken } from '../../../actions';
+import { authActions } from '../../../actions';
 
 interface ComponentWithAuthProps extends AuthState {
   redirectToLogin: boolean,
-  getToken?: typeof getToken
+  getToken?: typeof authActions.getToken
 };
 
 export default function withAuth(WrappedComponent) {
@@ -46,7 +46,7 @@ export default function withAuth(WrappedComponent) {
   });
 
   const mapDispatchToProps = {
-    getToken
+    getToken: authActions.getToken
   };
 
   return connect(mapStateToProps, mapDispatchToProps)(ComponentWithAuth);
