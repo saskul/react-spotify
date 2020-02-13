@@ -31,6 +31,7 @@ class App extends React.PureComponent<AuthState, State> {
       <Router>
         <div className="app">
           <Layout
+            TopBar={<BottomBar />}
             Player={<BottomBar />}
             Playlist={<BottomBar />}
             Equalizer={<BottomBar />}

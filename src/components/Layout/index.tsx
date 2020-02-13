@@ -2,6 +2,7 @@ import React from 'react';
 import './Layout.scss';
 
 type Props = {
+  TopBar: React.ReactNode,
   Player: React.ReactNode,
   Playlist: React.ReactNode,
   Equalizer: React.ReactNode,
@@ -16,6 +17,7 @@ type State = {};
 class Layout extends React.Component<Props, State> {
   render() {
     const {
+      TopBar,
       Player,
       Playlist,
       Equalizer,
@@ -26,36 +28,39 @@ class Layout extends React.Component<Props, State> {
       Details
     } = this.props;
     return (
-      <div className="grid">
-        <div className="grid__column">
-          <div className="grid__row">
-            {Player}
-          </div>
-          <div className="grid__row">
-            {Playlist}
-          </div>
-          <div className="grid__row">
-            {Equalizer}
-          </div>
-        </div>
+      <div className="grid --column">
+        <div className="grid__row --collapsed-height"><div style={{ height: '20px'}}>{TopBar}</div></div>
         <div className="grid__row">
           <div className="grid__column">
-            {BrowserList}
+            <div className="grid__row">
+              {Player}
+            </div>
+            <div className="grid__row">
+              {Playlist}
+            </div>
+            <div className="grid__row">
+              {Equalizer}
+            </div>
           </div>
-          <div className="grid__column">
-            <div className="grid__row">
-              <div className="grid__column">
-                {Artist}
-              </div>
-              <div className="grid__column">
-                {Album}
-              </div>
+          <div className="grid__row">
+            <div className="grid__column">
+              {BrowserList}
             </div>
-            <div className="grid__row --collapsed-height">
-              <div style={{ height: '20px'}}>{Search}</div>
-            </div>
-            <div className="grid__row">
-              {Details}
+            <div className="grid__column">
+              <div className="grid__row">
+                <div className="grid__column">
+                  {Artist}
+                </div>
+                <div className="grid__column">
+                  {Album}
+                </div>
+              </div>
+              <div className="grid__row --collapsed-height">
+                <div style={{ height: '20px'}}>{Search}</div>
+              </div>
+              <div className="grid__row">
+                {Details}
+              </div>
             </div>
           </div>
         </div>
