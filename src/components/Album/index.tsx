@@ -8,7 +8,7 @@ type State = {};
 class Album extends React.Component<Props, State> {
   render() {
     return (
-      <SideNav query="album" className="album" title="Album" />
+      <SideNav query="album" className="album" title="albums" />
     );
   }
 }

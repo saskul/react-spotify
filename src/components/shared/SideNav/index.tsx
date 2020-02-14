@@ -58,10 +58,12 @@ class SideNav extends React.Component<Props, State> {
   render() {
     const filtered_data = this.state.filtered_data;
     const data = filtered_data ? filtered_data.map(artist => artist.name) : false;
+    const caption = filtered_data ? `All (${filtered_data.length} ${this.props.title})` : '';
 
     return (
       <div className="sidenav">
-        <div className="sidenav__title">{this.props.title || ''}</div>
+        <div className="sidenav__title"><h3>{this.props.title || ''}</h3></div>
+         {caption && (<figcaption>{caption}</figcaption>)}
         <Scrollbar>
           <table id={`${this.props.query}-table`} className={`table ${this.props.className}`}>
             <tbody>

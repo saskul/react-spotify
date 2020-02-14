@@ -29,6 +29,22 @@ $line: (
     );
   }
 
+  figcaption {
+    padding: 2px 6px;
+    text-align: left;
+    display: inline;
+    vertical-align: middle;
+    background-color: white;
+    box-sizing: border-box;
+    margin: 2px 2px;
+    color: black;
+    text-shadow: none;
+  }
+
+  h3 {
+    text-transform: capitalize;
+  }
+
   h2, main, button {
     font-size: 0.7rem;
     text-transform: uppercase;
