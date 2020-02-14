@@ -3,7 +3,8 @@ import {
   GET_USER,
   SET_USER,
   USER_FAILURE,
-  GET_USER_PLAYLISTS
+  GET_USER_PLAYLISTS,
+  REFRESH_TOKEN
 } from '../types';
 import { userService } from '../services';
 
@@ -15,6 +16,9 @@ export function* fetchUser({ type, token }: any) {
   } catch (error) {
     console.error(error)
     yield put({ type: USER_FAILURE, error });
+    if (error.response && error.response.status === '401') {
+        yield put({ type: REFRESH_TOKEN, refresh_token: token['refresh_token'] || token['access_token'] });
+    }
   }
 }
 

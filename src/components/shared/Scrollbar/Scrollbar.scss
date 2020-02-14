@@ -13,9 +13,13 @@
   z-index: 1000;
   cursor: pointer;
   width: 20px;
-  height: 50px;
+  height: 0px;
   border-radius: 2px;
   transition: height 0.4s ease-in-out;
+  animation: set-height 0.4s;
+  @keyframes set-height {
+    from { width: 0px; } to { width: 20px;}
+  }
 }
 
 .thumb-horizontal {
