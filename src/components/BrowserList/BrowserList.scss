@@ -3,6 +3,7 @@
 .browser-list {
   //width: 100%;
   height: 100%;
+  max-width: 300px;
   @include winamp_theme() {
     background-color: black;
     color: var(--green-color);

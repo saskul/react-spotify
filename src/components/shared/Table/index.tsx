@@ -19,7 +19,8 @@ const leaveStrings = (data) => {
 };
 
 interface TableProps {
-  data?: any
+  data?: any,
+  className?: string
 }
 
 class Table extends React.Component<TableProps> {
@@ -40,7 +41,7 @@ class Table extends React.Component<TableProps> {
 
     return (
       <Scrollbar>
-        <table id={`${data.id}-table`} className="table">
+        <table id={`${data.id}-table`} className={`table ${this.props.className}`}>
           {Array.isArray(data) ? this.renderArrBody(data, keys) : this.renderJsonBody(data, keys)}
         </table>
       </Scrollbar>

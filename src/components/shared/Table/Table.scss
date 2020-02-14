@@ -1,17 +1,21 @@
 @import '../../../globals/themes';
 
 .table {
+  text-align: inherit;
   //overflow: hidden;
   tbody {
     box-sizing: border-box;
+    text-align: inherit;
     tr {
+      text-align: inherit;
       td {
         padding: 5px 10px;
         min-width: 100px;
         max-width: 100px;
+        text-align: inherit;
         transition: filter 0.4s;
         input {
-          text-align: center;
+          text-align: inherit;
           background-color: black;
           min-width: 0px;
           border: none;

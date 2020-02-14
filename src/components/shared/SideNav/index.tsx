@@ -11,7 +11,8 @@ type Props = {
   current_track: string,
   query: string,
   title: string,
-  setDetails: typeof spotifyActions.setDetails
+  setDetails: typeof spotifyActions.setDetails,
+  className: string
 };
 type State = { tracks?: any, current_track?: string, filtered_data?: any };
 
@@ -62,7 +63,7 @@ class SideNav extends React.Component<Props, State> {
       <div className="sidenav">
         <div className="sidenav__title">{this.props.title || ''}</div>
         <Scrollbar>
-          <table id={`${this.props.query}-table`} className="table">
+          <table id={`${this.props.query}-table`} className={`table ${this.props.className}`}>
             <tbody>
                 {data && data.map((value, index) => (
                 <tr key={`${index}.${value}`}>

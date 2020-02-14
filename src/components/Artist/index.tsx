@@ -8,7 +8,7 @@ type State = {};
 class Artist extends React.Component<Props, State> {
 
   render() {
-    return <SideNav query="artists" title="Artists" />;
+    return <SideNav query="artists" className="artist" title="Artists" />;
   }
 }
 
