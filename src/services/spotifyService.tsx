@@ -8,3 +8,11 @@ export function getUserPlaylists(token) {
   })
   .then(response => response.data);
 }
+
+export function getTracks({ token, uri }) {
+  return axios({
+      url: uri,
+      headers: getHeaders(token['access_token'])
+  })
+  .then(response => response.data);
+}

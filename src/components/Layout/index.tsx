@@ -39,7 +39,7 @@ class Layout extends React.Component<Props, State> {
             <div className="grid__row --collapsed-height --no-border --padded">
               <div className="line-through" />
               <div>
-                <b>{text.playlist.toUpperCase()}</b>
+                <h2><b>{text.playlist}</b></h2>
               </div>
               <div className="line-through" />
             </div>
@@ -49,7 +49,7 @@ class Layout extends React.Component<Props, State> {
             <div className="grid__row --collapsed-height --no-border --padded">
               <div className="line-through" />
               <div>
-                <b>{text.equalizer.toUpperCase()}</b>
+                <h2><b>{text.equalizer}</b></h2>
               </div>
               <div className="line-through" />
             </div>
@@ -57,7 +57,7 @@ class Layout extends React.Component<Props, State> {
               {Equalizer}
             </div>
           </div>
-          <div className="grid__row --no-border">
+          <div className="grid__row --no-border" style={{ maxWidth: '50vw' }}>
             <div className="grid__column">
               {BrowserList}
             </div>
@@ -71,7 +71,7 @@ class Layout extends React.Component<Props, State> {
                 </div>
               </div>
               <div className="grid__row --collapsed-height">
-                <div style={{ height: '20px'}}>{Search}</div>
+                {Search}
               </div>
               <div className="grid__row">
                 {Details}

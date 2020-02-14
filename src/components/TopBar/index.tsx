@@ -8,10 +8,10 @@ type State = {};
 class TopBar extends React.Component<Props, State> {
   render() {
     return (
-      <nav className="top-bar">
+      <nav className="top-bar --no-select">
         <div className="line-through" />
         <main className="--underlight">
-          {text.title.toUpperCase()}
+          <b>{text.title}</b>
         </main>
         <div className="line-through" />
       </nav>

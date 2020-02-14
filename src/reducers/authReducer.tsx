@@ -7,7 +7,7 @@ interface GetTokenAction {
 
 interface SetTokenAction {
   type: typeof SET_TOKEN,
-  token: string
+  token: any
 };
 
 interface AuthFailureAction {
@@ -23,7 +23,7 @@ const reducer = (state = InitialState, action: ActionTypes) => {
      case GET_TOKEN:
         return { ...state, loading: true };
      case SET_TOKEN:
-        return { ...state, token: action.token, loading: false };
+        return { ...state, token: { ...state.token, ...action.token }, loading: false };
      case AUTH_FAILURE:
         return { ...state, loading: false, redirectToLogin: true };
      default:

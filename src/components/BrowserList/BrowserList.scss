@@ -1,2 +1,57 @@
+@import '../../globals/themes';
+
 .browser-list {
+  //width: 100%;
+  height: 100%;
+  @include winamp_theme() {
+    background-color: black;
+    color: var(--green-color);
+  }
+  ul {
+    background-color: black;
+    list-style: none;
+    margin: 0px;
+    padding: 10px;
+    min-width: 60px;
+    text-align: left;
+  }
+}
+
+li {
+  cursor: pointer;
+  display: inline-block;
+  width: 100%;
+}
+
+li:hover {
+  filter: brightness(1.5);
+}
+
+li:before {
+  @include winamp_theme() {
+    width: 15px;
+    box-sizing: border-box;
+    content: "";
+    display: inline-block;
+    border: 1px solid #222;
+    border-style: dotted;
+    height: 20px;
+    margin-bottom: 3px;
+    margin-top: -10px;
+    border-width: 0px 0px 2px 2px;
+    margin-right: 5px;
+  }
+}
+
+li:first-child {
+  margin-top: 5px;
+}
+
+li[data-type='header']:before {
+  display: none;
+}
+
+li[data-type='header'] {
+  margin: 4px;
+  font-size: 12px;
 }

@@ -1,2 +1,16 @@
+@import '../../globals/themes';
+
 .details {
+  width: 100%;
+  height: 100%;
+  word-wrap: break-word;
+  overflow: auto;
+  @include winamp_theme() {
+    background-color: black;
+    color: var(--green-color);
+  }
+  p {
+    padding: 10px 15px;
+    margin: 0px;
+  }
 }

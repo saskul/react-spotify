@@ -1,16 +1,22 @@
 $bg: (
   1: #101019,
-  2: #24263C,
+  2: #101019,
   3: #44465C
 );
 
 $line: (
-  color: #5B5347,
-  color2: #FBF3D0,
-  edge-color: #1D4418
+  color: #8B5347,
+  color2: #9B9350,
+  edge-color: #4D2218
 );
 
 .winamp {
+  --font-color: #DCE6EA;
+  --font-color2: #44465C;
+  --green-color: #29CF28;
+  --bg-1-color: #{map-get($bg, 1)};
+  --bg-2-color: map-get($bg, 2);
+  color: #DCE6EA;
   font-size: 11px;
   text-shadow: 0px 0px 5px black;
   &.app {
@@ -20,6 +26,47 @@ $line: (
       map-get($bg, 1) 20%,
       map-get($bg, 2) 50%,
       map-get($bg, 1) 100%,
+    );
+  }
+
+  h2, main {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    @extend .--underlight-font;
+    margin: 2px;
+    font-weight: bold;
+    font-family: courier;
+  }
+
+  label {
+    font-size: 13px;
+  }
+
+  .line-gradient {
+    box-shadow: 0px 1px 5px 0px black;
+    background-image: linear-gradient(
+      to right,
+      map-get($line, color) 0%,
+      map-get($line, color2) 10%,
+      map-get($line, color) 55%,
+      map-get($line, edge-color) 60%,
+      map-get($line, color2) 65%,
+      map-get($line, color) 70%,
+      map-get($line, color2) 100%
+    );
+  }
+
+  .line-gradient--bottom {
+    box-shadow: 0px 1px 5px 0px black;
+    background-image: linear-gradient(
+      to bottom,
+      map-get($line, color) 0%,
+      map-get($line, color2) 10%,
+      map-get($line, color) 55%,
+      map-get($line, edge-color) 60%,
+      map-get($line, color2) 65%,
+      map-get($line, color) 70%,
+      map-get($line, color2) 100%
     );
   }
 
@@ -50,13 +97,6 @@ $line: (
   }
 
   .--underlight-font {
-    text-shadow: 0px 0px 2px map-get($bg, 3);
-  }
-
-  main {
-    @extend .--underlight-font;
-    font-size: 13px;
-    margin: 2px;
-    font-weight: bold;
+    text-shadow: 0px 0px 2px black;// map-get($bg, 3);
   }
 }

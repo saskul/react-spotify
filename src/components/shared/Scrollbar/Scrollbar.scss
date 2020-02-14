@@ -1,0 +1,37 @@
+@import '../../../globals/themes';
+
+.track-vertical {
+  @include winamp_theme() {
+    background-color: #050505;
+    border: 1px solid map-get($bg, 2);
+  }
+  height: 100%;
+  width: 20px;
+  right: 0;
+}
+.thumb-vertical {
+  z-index: 1000;
+  cursor: pointer;
+  width: 20px;
+  height: 50px;
+  border-radius: 2px;
+  transition: height 0.4s ease-in-out;
+}
+
+.thumb-horizontal {
+  z-index: 1000;
+  width: 50px;
+  height: 20px;
+  border-radius: 1px;
+  cursor: pointer;
+}
+
+.track-horizontal {
+  @include winamp_theme() {
+    background-color: #050505;
+    // background-color: map-get($bg, 1);
+    border: 1px solid map-get($bg, 2);
+  }
+  width: 100%;
+  bottom: 0;
+}

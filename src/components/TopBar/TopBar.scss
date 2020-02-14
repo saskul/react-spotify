@@ -5,6 +5,5 @@
   width: 100%;
   justify-content: center;
   align-items: center;
-  @include winamp_theme() {
-  }
+  @include winamp_theme()
 }

@@ -1,14 +1,14 @@
 import React from 'react';
+import SideNav from '../shared/SideNav';
 import './Artist.scss';
 
-type Props = {};
+type Props = { tracks?: any };
 type State = {};
 
 class Artist extends React.Component<Props, State> {
+
   render() {
-    return (
-      <div className="artist">Artist</div>
-    );
+    return <SideNav query="artists" title="Artists" />;
   }
 }
 
