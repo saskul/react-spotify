@@ -3,7 +3,6 @@
 
 
 .section {
-  overflow-y: hidden;
   @include winamp_theme() {
     border: 2px solid #42424C;
     padding: 1px;

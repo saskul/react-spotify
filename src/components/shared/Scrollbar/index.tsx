@@ -8,6 +8,15 @@ type Props = {
 
 class Scrollbar extends React.Component<Props> {
   render() {
+    if(this.props.vertical) {
+      return (
+       <Scrollbars
+        renderTrackVertical={props => <div {...props} className="track-vertical"/>}
+        renderThumbVertical={props => <div {...props} className="thumb-vertical line-gradient"/>}>
+        {this.props.children}
+      </Scrollbars>
+      );
+    }
     return (
       <Scrollbars
         renderTrackHorizontal={props => <div {...props} className="track-horizontal"/>}
