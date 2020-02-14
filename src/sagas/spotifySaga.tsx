@@ -3,7 +3,9 @@ import {
   GET_USER_PLAYLISTS,
   SET_USER_PLAYLISTS,
   SPOTIFY_FAILURE,
-  REFRESH_TOKEN
+  REFRESH_TOKEN,
+  GET_TRACKS,
+  SET_TRACKS
 } from '../types';
 import { spotifyService } from '../services';
 
@@ -15,6 +17,9 @@ export function* fetchUserPlaylists({ type, token }: any) {
   } catch (error) {
     console.error(error)
     yield put({ type: SPOTIFY_FAILURE, error });
+    if (error.response && error.response.status === '401') {
+        yield put({ type: REFRESH_TOKEN, refresh_token: token['refresh_token'] || token['access_token'] });
+    }
   }
 }
 
@@ -22,4 +27,27 @@ export function* fetchUserPlaylistsWatcher() {
   yield takeLatest(GET_USER_PLAYLISTS, fetchUserPlaylists);
 }
 
-export default [ fetchUserPlaylistsWatcher() ];
+
+export function* fetchTracks({ type, payload }: any) {
+  const { token, uri, id } = payload;
+  try {
+    const tracks = yield spotifyService.getTracks({ token, uri });
+    yield put({ type: SET_TRACKS, payload: { id, tracks } });
+    yield put({ type: REFRESH_TOKEN, refresh_token: token['refresh_token'] || token['access_token'] });
+  } catch (error) {
+    console.error(error)
+    yield put({ type: SPOTIFY_FAILURE, error });
+    if (error.response && error.response.status === '401') {
+        yield put({ type: REFRESH_TOKEN, refresh_token: token['refresh_token'] || token['access_token'] });
+    }
+  }
+}
+
+export function* fetchTracksWatcher() {
+  yield takeLatest(GET_TRACKS, fetchTracks);
+}
+
+export default [
+  fetchUserPlaylistsWatcher(),
+  fetchTracksWatcher()
+];

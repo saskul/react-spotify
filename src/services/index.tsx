@@ -1,10 +1,10 @@
 import { getToken, refreshToken } from './authService';
-import { getUserPlaylists } from './spotifyService';
+import { getUserPlaylists, getTracks } from './spotifyService';
 import { getUser } from './userService';
 
 const authService = { getToken, refreshToken };
 
-const spotifyService = { getUserPlaylists };
+const spotifyService = { getUserPlaylists, getTracks };
 
 const userService = { getUser };
 

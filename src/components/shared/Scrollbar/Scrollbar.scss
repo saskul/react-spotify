@@ -1,0 +1,48 @@
+@import '../../../globals/themes';
+
+@keyframes set-width {
+  from { width: 0px; } to { width: 20px;}
+}
+
+@keyframes set-height {
+  from { height: 0px; } to { height: 20px;}
+}
+
+.track-vertical {
+  @include winamp_theme() {
+    background-color: #050505;
+    border: 1px solid map-get($bg, 2);
+  }
+  height: 100%;
+  width: 20px;
+  right: 0;
+}
+.thumb-vertical {
+  z-index: 1000;
+  cursor: pointer;
+  width: 20px;
+  height: 0px;
+  border-radius: 2px;
+  transition: height 0.4s ease-in-out;
+  animation: set-width 0.4s;
+}
+
+.thumb-horizontal {
+  z-index: 1000;
+  width: 0px;
+  height: 0px;
+  border-radius: 1px;
+  cursor: pointer;
+  transition: width 0.4s ease-in-out;
+  animation: set-height 0.4s forwards set-width 0.4s forwards;
+}
+
+.track-horizontal {
+  @include winamp_theme() {
+    background-color: #050505;
+    // background-color: map-get($bg, 1);
+    border: 1px solid map-get($bg, 2);
+  }
+  width: 100%;
+  bottom: 0;
+}

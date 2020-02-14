@@ -1,0 +1,51 @@
+@import '../../../globals/themes';
+
+.table {
+  text-align: inherit;
+  //overflow: hidden;
+  tbody {
+    box-sizing: border-box;
+    text-align: inherit;
+    tr {
+      text-align: inherit;
+      td {
+        padding: 5px 10px;
+        min-width: 100px;
+        max-width: 100px;
+        text-align: inherit;
+        transition: filter 0.4s;
+        input {
+          text-align: inherit;
+          background-color: black;
+          min-width: 0px;
+          border: none;
+          width: 100%;
+          cursor: copy;
+          @include winamp_theme() {
+            color: var(--green-color);
+          }
+        }
+      }
+    }
+  }
+}
+
+th {
+  box-sizing: border-box;
+  position: sticky;
+  top: 10x;
+  z-index: 100;
+  @include winamp_theme() {
+    font-family: arial;
+    font-weight: normal;
+    background-color: map-get($bg, 2);
+    padding: 4px;
+    border: 1px solid map-get($bg, 3);
+    text-transform: capitalize;
+    height: 20px;
+  }
+}
+
+td:hover {
+  filter: brightness(1.25)
+}

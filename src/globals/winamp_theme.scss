@@ -1,0 +1,119 @@
+$bg: (
+  1: #101019,
+  2: #101019,
+  3: #44465C
+);
+
+$line: (
+  color: #8B5347,
+  color2: #9B9350,
+  edge-color: #4D2218
+);
+
+.winamp {
+  --font-color: #DCE6EA;
+  --font-color2: #44465C;
+  --green-color: #29CF28;
+  --bg-1-color: #{map-get($bg, 1)};
+  --bg-2-color: map-get($bg, 2);
+  color: #DCE6EA;
+  font-size: 11px;
+  text-shadow: 0px 0px 5px black;
+  &.app {
+    background-image: linear-gradient(
+      to bottom,
+      map-get($bg, 2) 0%,
+      map-get($bg, 1) 20%,
+      map-get($bg, 2) 50%,
+      map-get($bg, 1) 100%,
+    );
+  }
+
+  figcaption {
+    font-size: 12px;
+    padding: 1px 3px;
+    text-align: left;
+    display: inline;
+    vertical-align: middle;
+    background-color: white;
+    box-sizing: border-box;
+    margin: 2px 2px;
+    color: black;
+    text-shadow: none;
+  }
+
+  h3 {
+    text-transform: capitalize;
+  }
+
+  h2, main, button {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    @extend .--underlight-font;
+    margin: 2px;
+    font-weight: bold;
+    font-family: courier;
+  }
+
+  label {
+    font-size: 13px;
+  }
+
+  .line-gradient {
+    box-shadow: 0px 1px 5px 0px black;
+    background-image: linear-gradient(
+      to right,
+      map-get($line, color) 0%,
+      map-get($line, color2) 10%,
+      map-get($line, color) 55%,
+      map-get($line, edge-color) 60%,
+      map-get($line, color2) 65%,
+      map-get($line, color) 70%,
+      map-get($line, color2) 100%
+    );
+  }
+
+  .line-gradient--bottom {
+    box-shadow: 0px 1px 5px 0px black;
+    background-image: linear-gradient(
+      to bottom,
+      map-get($line, color) 0%,
+      map-get($line, color2) 10%,
+      map-get($line, color) 55%,
+      map-get($line, edge-color) 60%,
+      map-get($line, color2) 65%,
+      map-get($line, color) 70%,
+      map-get($line, color2) 100%
+    );
+  }
+
+  .line-through {
+    height: 6px;
+    width: 100%;
+    border-radius: 40px;
+    margin-right: 5px;
+    margin-left: 5px;
+    box-shadow: 0px 1px 5px 0px black;
+    background-image: linear-gradient(
+      to bottom,
+      map-get($line, color) 0%,
+      map-get($line, color2) 10%,
+      map-get($line, color) 55%,
+      map-get($line, edge-color) 60%,
+      map-get($line, color2) 65%,
+      map-get($line, color) 70%,
+      map-get($line, color2) 100%
+    );
+  }
+
+  .--underlight {
+    // text-shadow: 0px 0px 10px 10px map-get($bg, 2);
+    box-shadow:         0px 0px 30px 0px map-get($bg, 2);
+    -moz-box-shadow:    0px 0px 30px 0px map-get($bg, 2);
+    -webkit-box-shadow: 0px 0px 30px 0px map-get($bg, 2);
+  }
+
+  .--underlight-font {
+    text-shadow: 0px 0px 2px black;// map-get($bg, 3);
+  }
+}

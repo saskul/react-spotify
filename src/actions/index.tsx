@@ -1,5 +1,8 @@
 import { getToken, setToken, refreshToken } from './authActions';
+import { setDetails, getTracks } from './spotifyActions';
 
 const authActions = { getToken, setToken, refreshToken };
 
-export { authActions };
+const spotifyActions = { setDetails, getTracks };
+
+export { authActions, spotifyActions };

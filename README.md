@@ -46,15 +46,18 @@ apply routing to the application.***
         - shared
             - hoc
     - [store](#redux-store)
-        - [constants](#constants)
-        - [actions](#actions)
-        - [sagas](#sagas) 
+        - [state](#state)
     - [`App.tsx`](#react-app)
 - [`index.js`](#server)
 
 ---
 
 ### Server
+#### Authentication
+> Authentication is handled entirely by Spotify Web API. Once user is authenticated by the platform, his token is stored within redux store. Each consecutive request will refresh the token.
+
+#### Development
+> To start developing fill the [environment variables](#environment-variables), and simply `npm install && npm start`
 #### Environment variables
 ```sh
 # CONFIG
@@ -94,36 +97,36 @@ API_AUTH_DEV              = 'https://winampify.com/api/auth/develop'
 ### React App
 
 #### Redux Store
-##### Constants 
-##### Actions
-##### Sagas
+##### State
+- auth
+    - loading
+    - token
+- spotify
+    - loading
+    - playlists
+- user
+    - loading
+    - data
+- theme
+    - current
 
 ---
 
 ### Components 
-#### TopBar
+##### Layout
+> Component which puts children in correct places using flex-boxes.
+
+##### TopBar
+> Navigation into user profile and change theme button
+
+##### Search 
 > Containing search component where user can search for artists tracks etc.
 
-#### MainContent
-> Displaying search results or category contents or any other content
-not mentioned elsewhere.
+##### BrowserList
+> Displaying search results in a list-like fashion.
 
-#### BottomBar
-> With player, after clicking on track user should be able to listen a song
-(demo 30s).
-
-#### Sidebar
-> Containing two tabs/buttons: “Categories” and “New Releases”
-
-##### Categories
-> After clicking on “Categories” users should be able to see a list
-of categories in Main Content (same as in real Spotify app - matrix/grid). Also
-after clicking on category user should be able to see playlists and their tracks
-(after clicking on the playlist).
-
-##### NewReleases
-> After clicking on “New Releases” albums and their tracks
-should be displayed (just like with playlists in “Categories”).
+##### Sidebar
+> Consists of Artist, Album, Search and Details, all connected to logged-in user playlists.
 
 #### UserProfile
 > View displaying user details
@@ -131,4 +134,4 @@ should be displayed (just like with playlists in “Categories”).
 ---
 
 ### Styling
-> The themes functionality was based on the tutorial made by [Jason McAffe](https://www.google.com/search?q=themes+scss+react&oq=themes+scss+react&aqs=chrome..69i57j35i39j0l6.7231j0j7&sourceid=chrome&ie=UTF-8).
+> The themes functionality was based on the tutorial made by [Jason McAffe](https://medium.com/@jasonlmcaffee/theming-with-react-and-sass-c7a6882fd26b).

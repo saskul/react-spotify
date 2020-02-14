@@ -1,2 +1,9 @@
+@import '../../globals/themes';
+
 .top-bar {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  @include winamp_theme()
 }
