@@ -1,5 +1,13 @@
 @import '../../../globals/themes';
 
+@keyframes set-width {
+  from { width: 0px; } to { width: 20px;}
+}
+
+@keyframes set-height {
+  from { height: 0px; } to { height: 20px;}
+}
+
 .track-vertical {
   @include winamp_theme() {
     background-color: #050505;
@@ -16,18 +24,17 @@
   height: 0px;
   border-radius: 2px;
   transition: height 0.4s ease-in-out;
-  animation: set-height 0.4s;
-  @keyframes set-height {
-    from { width: 0px; } to { width: 20px;}
-  }
+  animation: set-width 0.4s;
 }
 
 .thumb-horizontal {
   z-index: 1000;
-  width: 50px;
-  height: 20px;
+  width: 0px;
+  height: 0px;
   border-radius: 1px;
   cursor: pointer;
+  transition: width 0.4s ease-in-out;
+  animation: set-height 0.4s forwards set-width 0.4s forwards;
 }
 
 .track-horizontal {

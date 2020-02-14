@@ -29,7 +29,7 @@ $line: (
     );
   }
 
-  h2, main {
+  h2, main, button {
     font-size: 0.7rem;
     text-transform: uppercase;
     @extend .--underlight-font;
