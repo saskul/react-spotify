@@ -3,7 +3,12 @@ import distant_cough from '../../static/distant_cough.mp3';
 import './Player.scss';
 
 type Props = {};
-type State = {};
+type State = {
+  selectedTrack?: string | null,
+  player: string | null,
+  currentTime?: string | null,
+  duration?: number | null
+};
 
 
 const campfireStory = distant_cough;
@@ -18,12 +23,17 @@ function getTime(time) {
 }
 
 class Player extends React.Component<Props, State> {
-  state = {
-    selectedTrack: null,
-    player: "stopped",
-    currentTime: null,
-    duration: null
-  };
+  private player;
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      selectedTrack: null,
+      player: "stopped",
+      currentTime: null,
+      duration: null
+    };
+  }
 
   componentDidMount() {
     this.player.addEventListener("timeupdate", e => {
