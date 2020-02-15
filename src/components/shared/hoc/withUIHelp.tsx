@@ -1,11 +1,15 @@
 import React, { useState, Fragment } from 'react';
 import { AuthState } from '../../../types';
-import UIImg from '../../../static/ui.png';
 
 interface ComponentWithUIHelpType extends AuthState {};
 
-export default function withUIHelp(WrappedComponent) {
-  const UIHelp = () => {
+interface UIHelpProps {
+ src: string,
+};
+
+
+export default function withUIHelp(WrappedComponent, src) {
+  const UIHelp: React.SFC<UIHelpProps> = ({ src }) => {
     const [ UIOpen, setUIOpen ] = useState(false);
     const localStorageItem = localStorage.getItem('ui-help');
     const storedSettings = localStorageItem ? JSON.parse(localStorageItem) : {};
@@ -38,7 +42,7 @@ export default function withUIHelp(WrappedComponent) {
           }}>
             <img
               alt="UI concept"
-              src={UIImg} />
+              src={src} />
             <div>
               <button style={{ cursor: 'pointer' }} onClick={() => handleHorizontalDirectionChange()}>
                 {horizontalDirection === 'left' ? '→' : '←'}
@@ -63,7 +67,7 @@ export default function withUIHelp(WrappedComponent) {
       return (
         <Fragment>
         <WrappedComponent {...this.props } />
-          {process.env.REACT_APP_UI_HELP === 'true' && <UIHelp />}
+          {process.env.REACT_APP_UI_HELP === 'true' && <UIHelp src={src} />}
         </Fragment>
       );
     }
