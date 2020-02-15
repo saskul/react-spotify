@@ -9,6 +9,7 @@
 }
 
 .track-vertical {
+  z-index: 1000;
   @include winamp_theme() {
     background-color: #050505;
     border: 1px solid map-get($bg, 2);
@@ -38,6 +39,7 @@
 }
 
 .track-horizontal {
+  z-index: 1000;
   @include winamp_theme() {
     background-color: #050505;
     // background-color: map-get($bg, 1);

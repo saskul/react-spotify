@@ -1,0 +1,34 @@
+@import '../../../../globals/themes';
+
+.info {
+  @include winamp_theme() {
+    color: var(--green-color);
+    background-color: black;
+    width: 100%;
+    padding: 2px 4px;
+    border: 2px solid map-get($bg, 3);
+    border-width: 0px 2px 2px 0px;
+    font-size: 11px;
+    position: relative;
+    height: 13px;
+    overflow: hidden;
+  }
+
+  .info__content {
+    position: absolute;
+    animation: slide-left 4s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    right: 0px;
+    width: 100%;
+    text-align: left;
+
+    @keyframes slide-left {
+      0% {
+        right: -100%;
+      } 100% {
+        right: 100%;
+      }
+    }
+  }
+}

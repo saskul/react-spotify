@@ -1,7 +1,8 @@
 $bg: (
-  1: #101019,
-  2: #101019,
-  3: #44465C
+  1: #39395a,
+  2: #13131d,
+  3: #5b5c63,
+  4: #24265C
 );
 
 $line: (
@@ -10,23 +11,26 @@ $line: (
   edge-color: #4D2218
 );
 
+$bg-gradient: linear-gradient(
+  to bottom,
+  map-get($bg, 2) 0%,
+  map-get($bg, 1) 20%,
+  map-get($bg, 2) 50%,
+  map-get($bg, 1) 100%,
+);
+
 .winamp {
   --font-color: #DCE6EA;
   --font-color2: #44465C;
   --green-color: #29CF28;
   --bg-1-color: #{map-get($bg, 1)};
   --bg-2-color: map-get($bg, 2);
+
   color: #DCE6EA;
   font-size: 11px;
   text-shadow: 0px 0px 5px black;
   &.app {
-    background-image: linear-gradient(
-      to bottom,
-      map-get($bg, 2) 0%,
-      map-get($bg, 1) 20%,
-      map-get($bg, 2) 50%,
-      map-get($bg, 1) 100%,
-    );
+    background-image: $bg-gradient;
   }
 
   figcaption {
@@ -40,6 +44,13 @@ $line: (
     margin: 2px 2px;
     color: black;
     text-shadow: none;
+  }
+
+  h4 {
+    margin: 0px;
+    padding: 2px;
+    font-size: 10px;
+    font-family: courier;
   }
 
   h3 {

@@ -1,0 +1,69 @@
+@import '../../../../globals/themes';
+
+.slider {
+  cursor: pointer;
+  @include winamp_theme() {
+    background-color: map-get($bg, 2);
+    border: 1px solid map-get($bg, 3);
+    border-width: 0px 2px 2px 0px;
+  }
+}
+
+//  CLEAR STYLING
+.slider {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 10px;
+  background-color: black;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+}
+
+.slider:focus {
+  outline: none;
+}
+
+.slider::-ms-track {
+  width: 100%;
+  cursor: pointer;
+  border-color: transparent;
+  color: black;
+}
+
+//  THUMB
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  @include winamp_theme() {
+    background: url('../../../../static/controls/btn-slider.png');
+  }
+  background-repeat: no-repeat;
+  cursor: pointer;
+  height: 10px;
+  width: 29px;
+}
+
+.slider::-moz-range-thumb {
+  @include winamp_theme() {
+    background: url('../../../../static/controls/btn-slider.png');
+  }
+  background-repeat: no-repeat;
+  margin-top: -14px;
+  cursor: pointer;
+  border-radius: 0px;
+  border: none;
+  height: 10px;
+  width: 29px;}
+
+.slider::-ms-thumb {
+  @include winamp_theme() {
+    background: url('../../../../static/controls/btn-slider.png');
+  }
+  background-repeat: no-repeat;
+  margin-top: -14px;
+  border-radius: 0px;
+  border: none;
+  cursor: pointer;
+  height: 20px;
+  width: 29px;}

@@ -1,7 +1,9 @@
 @import './globals/themes';
 
 .app {
-  @include winamp-theme()
+  @include winamp-theme() {
+    font-family: roboto;
+  }
   width: 100vw;
   height: 100vh;
   max-width: 100%;
@@ -19,4 +21,13 @@ body {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+}
+
+@font-face {
+  font-family: 'open24';
+  src: local('open_24_display_st'), url(./static/fonts/open_24_display_st.ttf) format('truetype');
+}
+
+.--open-24-font {
+  font-family: open24;
 }

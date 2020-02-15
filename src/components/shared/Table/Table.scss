@@ -23,6 +23,7 @@
           cursor: copy;
           @include winamp_theme() {
             color: var(--green-color);
+            width: 95%;
           }
         }
       }
@@ -38,7 +39,7 @@ th {
   @include winamp_theme() {
     font-family: arial;
     font-weight: normal;
-    background-color: map-get($bg, 2);
+    background-color: map-get($bg, 4);
     padding: 4px;
     border: 1px solid map-get($bg, 3);
     text-transform: capitalize;

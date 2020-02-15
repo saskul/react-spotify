@@ -63,7 +63,7 @@ class SideNav extends React.Component<Props, State> {
     return (
       <div className="sidenav">
         <div className="sidenav__title"><h3>{this.props.title || ''}</h3></div>
-         {caption && (<figcaption>{caption}</figcaption>)}
+         {caption && (<figcaption className="--no-select">{caption}</figcaption>)}
         <Scrollbar>
           <table id={`${this.props.query}-table`} className={`table ${this.props.className}`}>
             <tbody>

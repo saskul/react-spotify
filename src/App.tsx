@@ -24,6 +24,7 @@ import {
 import withAuth from './components/shared/hoc/withAuth';
 import withUIHelp from './components/shared/hoc/withUIHelp';
 import withTheme from './components/shared/hoc/withTheme';
+import UIImg from './static/ui.png';
 
 type State = {};
 
@@ -56,8 +57,9 @@ class App extends React.PureComponent<AuthState, State> {
   }
 }
 
-export default compose(
+const WrappedProductionApp = compose(
   withTheme,
-  withUIHelp,
   withAuth
 )(App);
+
+export default withUIHelp(WrappedProductionApp, UIImg);
