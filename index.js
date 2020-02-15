@@ -6,6 +6,7 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const path = require('path');
 const api = require('./api');
+const fs = require('fs');
 
 const { HOST_PORT, PORT } = process.env;
 
@@ -17,17 +18,30 @@ app.use('/api', api);
 app.use(express.static(path.join(__dirname, 'build')));
 
 app.get('/develop', (req, res) => {
-	    res.redirect(`http://localhost:${PORT}?code=${req.query.code}`);
+  res.redirect(`http://localhost:${PORT}?code=${req.query.code}`);
 });
-	app.get('/', (req, res) => {
-		  if (req.query.code) {
-			      res.redirect(`?code=${req.query.code}`);
-			    } else {
-				        res.redirect(proces.env.REACT_APP_WINAMPIFY);
-				      }
-	});
 
-	app.listen(HOST_PORT, () => {
-			  console.log(`Server is listening on port ${HOST_PORT}`);
-	});
+app.get('/readme', (req, res) => {
+  try {
+    const readme = fs.readFileSync('./README.md');
+    res.send(readme);
+  } catch (err) {
+    console.error(err);
+    res.status(404).json({ error: err });
+  }
+});
+
+app.get('/', (req, res) => {
+  if (req.query.code) {
+    res.redirect(`?code=${req.query.code}`);
+  } else {
+    res.redirect(proces.env.REACT_APP_WINAMPIFY);
+  }
+});
+
+
+
+app.listen(HOST_PORT, () => {
+  console.log(`Server is listening on port ${HOST_PORT}`);
+});
 

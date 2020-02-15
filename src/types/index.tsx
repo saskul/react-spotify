@@ -48,3 +48,6 @@ export const SET_USER = 'SET_USER';
 export const USER_FAILURE = 'USER_FAILURE';
 
 export const CHANGE_THEME = 'CHANGE_THEME';
+
+export const GET_TRACK = 'GET_TRACK';
+export const PUSH_TRACK_TO_PLAYLIST = 'PUSH_TRACK_TO_PLAYLIST';
