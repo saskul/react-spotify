@@ -23,6 +23,7 @@
           cursor: copy;
           @include winamp_theme() {
             color: var(--green-color);
+            width: 95%;
           }
         }
       }

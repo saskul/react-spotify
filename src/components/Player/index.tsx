@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { Fragment } from 'react';
+import PlayerUI from './PlayerUI';
 import distant_cough from '../../static/distant_cough.mp3';
 import './Player.scss';
 
@@ -83,6 +84,11 @@ class Player extends React.Component<Props, State> {
     }
   }
 
+  handlePlay = () => this.setState({ player: "playing" });
+  handlePause = () => this.setState({ player: "paused" });
+  handleStop = () => this.setState({ player: "stopped" });
+
+
   render() {
     const list = [
       { id: 1, title: "Campfire Story" },
@@ -102,28 +108,15 @@ class Player extends React.Component<Props, State> {
     const duration = getTime(this.state.duration);
 
     return (
-      <>
-        <h1>My Little Player</h1>
-        <ul>{list}</ul>
-        <div>
-          {this.state.player === "paused" && (
-            <button onClick={() => this.setState({ player: "playing" })}>
-              Play
-            </button>
-          )}
-          {this.state.player === "playing" && (
-            <button onClick={() => this.setState({ player: "paused" })}>
-              Pause
-            </button>
-          )}
-          {this.state.player === "playing" || this.state.player === "paused" ? (
-            <button onClick={() => this.setState({ player: "stopped" })}>
-              Stop
-            </button>
-          ) : (
-            ""
-          )}
-        </div>
+      <div style={{ width: '100%', height: '100%', display: 'flex', flexDirection: 'column' }}>
+        <PlayerUI
+          onClickPrev={() => console.log('prev')}
+          onClickPlay={this.handlePlay}
+          onClickPause={this.handlePause}
+          onClickStop={this.handleStop}
+          onClickNext={() => console.log('next')}
+          currentTime={currentTime}
+          duration={duration} />
         {this.state.player === "playing" || this.state.player === "paused" ? (
           <div>
             {currentTime} / {duration}
@@ -131,8 +124,10 @@ class Player extends React.Component<Props, State> {
         ) : (
           ""
         )}
-        <audio ref={ref => (this.player = ref)} />
-      </>
+                {list}
+
+        <audio id="player" ref={ref => (this.player = ref)} />
+      </div>
     );
   }
 }

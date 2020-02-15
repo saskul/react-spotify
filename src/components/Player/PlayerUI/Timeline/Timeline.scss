@@ -1,0 +1,25 @@
+@import '../../../../globals/themes';
+
+.timeline {
+  width: 80px;
+  max-height: 80px;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  background-color: black;
+  .timeline__clock {
+    height: max-content;
+    text-align: right;
+    padding: 2px 6px;
+    @include winamp_theme() {
+      color: var(--green-color);
+      font-size: 28px;
+      text-shadow: none;
+      line-height: 32px;
+      vertical-align: top;
+    }
+  }
+  .timeline__visual {
+    height: inherit;
+  }
+}

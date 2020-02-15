@@ -1,0 +1,13 @@
+button {
+  &.img {
+    padding: 0px !important;
+    margin: 0px;
+    border: none;
+    background-color: rgba(0,0,0,0);
+    cursor: pointer;
+  }
+}
+
+button span {
+  background-color: red;
+}

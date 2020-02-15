@@ -33,7 +33,7 @@ class Layout extends React.Component<Props, State> {
         <div className="grid__row --collapsed-height --no-border">{TopBar}</div>
         <div className="grid__row --no-border">
           <div className="grid__column --no-border">
-            <div className="grid__row">
+            <div className="grid__row" style={{ height: 'fit-content' }}>
               {Player}
             </div>
             <div className="grid__row --collapsed-height --no-border --padded">
