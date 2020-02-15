@@ -1,5 +1,8 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import Scrollbar from '../Scrollbar';
+import { spotifyActions } from '../../../actions';
+import { Token } from '../../../types';
 import { uid } from 'react-uid';
 import './Table.scss';
 
@@ -14,19 +17,27 @@ const leaveStrings = (data) => {
       stringData[key] = data[key];
     }
   });
-
   return ({ name: stringData.name, id: stringData.id, ...stringData });
 };
 
+const leaveOutTracks = (data) => {
+  return data.filter(item => item.type === 'track');
+}
+
 interface TableProps {
   data?: any,
-  className?: string
+  className?: string,
+  getTrack?: any,
+  token: Token
 }
 
 class Table extends React.Component<TableProps> {
-  handleValueClick = (ref) => {
+  handleValueClick = (ref, item={type: '', id: ''}) => {
     this[ref] && this[ref].select();
     document.execCommand('copy');
+    if (item.type === 'track') {
+      this.props.getTrack({ id: item.id, token: this.props.token });
+    }
   }
 
   render() {
@@ -72,6 +83,7 @@ class Table extends React.Component<TableProps> {
   }
 
   renderArrBody = (data, keys) => {
+
     return (
       <tbody>
         <tr>
@@ -79,23 +91,32 @@ class Table extends React.Component<TableProps> {
             <th style={{ position: 'sticky', top: '0' }} key={key}>{key}</th>
            ))}
         </tr>
-        {data.map(item => (
+        {leaveOutTracks(data).map(item => {
+          return (
           <tr key={uid(item)}>
             {keys.map(key => (
               <td key={uid({ item: item[key] })}>
                 <input
                   ref={(header) => this[key] = header}
                   value={item[key]}
-                  onClick={() => this.handleValueClick(item[key])}
+                  onClick={() => this.handleValueClick(item[key], item)}
                   onChange={() => null}>
                 </input>
               </td>
             ))}
           </tr>
-        ))}
+        )})}
       </tbody>
     );
   }
 }
 
-export default Table;
+const mapStateToProps = state => ({
+  token: state.auth.token
+});
+
+const mapDispatchToProps = {
+  getTrack: spotifyActions.getTrack
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Table);
