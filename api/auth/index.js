@@ -13,13 +13,13 @@ const {
 
 authApi.get('/develop', (req, res) => {
 	  res.redirect(
-	    `${SPOTIFY_WEB_API}/authorize?client_id=${SPOTIFY_CLIENT_ID}&redirect_uri=${SPOTIFY_REDIRECT_URI_DEV}&response_type=code&scope=${SPOTIFY_SCOPES}`
+	    `${SPOTIFY_WEB_API}?client_id=${SPOTIFY_CLIENT_ID}&redirect_uri=${SPOTIFY_REDIRECT_URI_DEV}&response_type=code&scope=${SPOTIFY_SCOPES}`
 	  );
 });
 
 authApi.get('/', (req, res) => {
 	  res.redirect(
-	    `${SPOTIFY_WEB_API}/authorize?client_id=${SPOTIFY_CLIENT_ID}&redirect_uri=${SPOTIFY_REDIRECT_URI}&response_type=code&scope=${SPOTIFY_SCOPES}`
+	    `${SPOTIFY_WEB_API}?client_id=${SPOTIFY_CLIENT_ID}&redirect_uri=${SPOTIFY_REDIRECT_URI}&response_type=code&scope=${SPOTIFY_SCOPES}`
 	  );
 });
 
