@@ -1,9 +1,10 @@
-import React, { Fragment, useRef, useState } from 'react';
+import React from 'react';
 import AudioSpectrum from 'react-audio-spectrum';
+import { getTime } from '../../../Player';
 import './Timeline.scss';
 
 export type TimelineType = {
-  currentTime?: string,
+  currentTime?: number,
   status: string
 };
 
@@ -41,7 +42,7 @@ class Timeline extends React.Component<TimelineType, State> {
           ➤
         </div>
         <div className="timeline__clock --open-24-font">
-          {currentTime || '0:00'}
+          {getTime(currentTime) || '0:00'}
         </div>
         <div className="timeline__visual">
           <AudioSpectrum

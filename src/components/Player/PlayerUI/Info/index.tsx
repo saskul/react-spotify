@@ -1,23 +1,17 @@
-import React, { Fragment } from 'react';
-import Button from '../../../shared/Button';
+import React from 'react';
+import './Info.scss';
 
 export type InfoType = {
-  onClickPrev?: any,
-  onClickPlay?: any,
-  onClickPause?: any,
-  onClickStop?: any,
-  onClickNext?: any,
+  info?: string
 };
 
-const Info: React.SFC<InfoType> = ({ onClickPrev, onClickPlay, onClickPause, onClickStop, onClickNext }) => {
+const Info: React.SFC<InfoType> = ({ info }) => {
   return (
-    <Fragment>
-      <Button type="btn_prev" onClick={onClickPrev} />
-      <Button type="btn_play" onClick={onClickPlay} />
-      <Button type="btn_pause" onClick={onClickPause} />
-      <Button type="btn_stop" onClick={onClickStop} />
-      <Button type="btn_next" onClick={onClickNext} />
-    </Fragment>
+    <div className="info">
+      <div className="info__content">
+        {info || 'Info kontekt leci se leci jakies minutki 10;0;10; o panie niedlugo poraq na obiad'}
+      </div>
+    </div>
   );
 }
 

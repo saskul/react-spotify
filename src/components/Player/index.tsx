@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import PlayerUI from './PlayerUI';
 import distant_cough from '../../static/distant_cough.mp3';
 import './Player.scss';
@@ -7,15 +7,15 @@ type Props = {};
 type State = {
   selectedTrack?: string | null,
   status: string,
-  currentTime?: string | null,
-  duration?: number | null
+  currentTime?: number,
+  duration?: number,
+  info: string
 };
-
 
 const campfireStory = distant_cough;
 const bootingUp = distant_cough;
 
-function getTime(time) {
+export function getTime(time) {
   if (!isNaN(time)) {
     return (
       Math.floor(time / 60) + ":" + ("0" + Math.floor(time % 60)).slice(-2)
@@ -31,14 +31,15 @@ class Player extends React.Component<Props, State> {
     this.state = {
       selectedTrack: null,
       status: "stopped",
-      currentTime: null,
-      duration: null
+      currentTime: 0,
+      duration: 0,
+      info: ''
     };
   }
 
   componentDidMount() {
     this.player.addEventListener('ended', e => {
-        this.setState({ status: 'stopped' });
+        this.setState({ status: 'paused' });
     }, false);
     this.player.addEventListener("timeupdate", e => {
       const currentTime = e.target.currentTime;
@@ -81,8 +82,7 @@ class Player extends React.Component<Props, State> {
         this.player.currentTime = 0;
         this.setState({ selectedTrack: null });
       } else if (
-        this.state.status === "playing" &&
-        prevState.status === "paused"
+        this.state.status === "playing"
       ) {
         this.player.play();
       }
@@ -92,6 +92,16 @@ class Player extends React.Component<Props, State> {
   handlePlay = () => this.setState({ status: "playing" });
   handlePause = () => this.setState({ status: "paused" });
   handleStop = () => this.setState({ status: "stopped" });
+  handleSliderChange = (e) => {
+    if (this.state.duration) {
+      this.player.currentTime = (Number(e.target.value)/100) * this.state.duration;
+      this.player.play();
+    }
+  }
+  handleVolumeChange = (e) => {
+    console.log(e.target.value);
+    this.player.volume = Number(e.target.value) / 100;
+  }
 
 
   render() {
@@ -102,15 +112,12 @@ class Player extends React.Component<Props, State> {
       return (
         <li
           key={item.id}
-          onClick={() => this.setState({ selectedTrack: item.title })}
+          onClick={() => this.setState({ selectedTrack: item.title, status: "playing" })}
         >
           {item.title}
         </li>
       );
     });
-
-    const currentTime = getTime(this.state.currentTime);
-    const duration = getTime(this.state.duration);
 
     return (
       <div style={{ width: '100%', height: '100%', display: 'flex', flexDirection: 'column' }}>
@@ -120,12 +127,15 @@ class Player extends React.Component<Props, State> {
           onClickPause={this.handlePause}
           onClickStop={this.handleStop}
           onClickNext={() => console.log('next')}
-          currentTime={currentTime}
-          duration={duration}
-          status={this.state.status} />
+          onSliderChange={this.handleSliderChange}
+          onVolumeChange={this.handleVolumeChange}
+          currentTime={this.state.currentTime}
+          duration={this.state.duration}
+          status={this.state.status}
+          info={this.state.info} />
         {this.state.status === "playing" || this.state.status === "paused" ? (
           <div>
-            {currentTime} / {duration}
+            {getTime(this.state.currentTime)} / {getTime(this.state.duration)}
           </div>
         ) : (
           ""

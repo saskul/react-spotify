@@ -1,7 +1,9 @@
 @import './globals/themes';
 
 .app {
-  @include winamp-theme()
+  @include winamp-theme() {
+    font-family: roboto;
+  }
   width: 100vw;
   height: 100vh;
   max-width: 100%;
