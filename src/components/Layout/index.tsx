@@ -57,8 +57,8 @@ class Layout extends React.Component<Props, State> {
               {Equalizer}
             </div>
           </div>
-          <div className="grid__row --no-border" style={{ maxWidth: '50vw' }}>
-            <div className="grid__column">
+          <div className="grid__row --no-border">
+            <div className="grid__column" style={{ width: '300px' }}>
               {BrowserList}
             </div>
             <div className="grid__column">
