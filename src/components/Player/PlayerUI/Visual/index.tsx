@@ -1,9 +1,9 @@
 import React from 'react';
 import AudioSpectrum from 'react-audio-spectrum';
 import { getTime } from '../../../Player';
-import './Timeline.scss';
+import './Visual.scss';
 
-export type TimelineType = {
+export type VisualType = {
   currentTime?: number,
   status: string
 };
@@ -16,7 +16,7 @@ export type State = {
   gap: number
 };
 
-class Timeline extends React.Component<TimelineType, State> {
+class Visual extends React.Component<VisualType, State> {
   private containerRef;
   constructor(props) {
     super(props);
@@ -65,7 +65,7 @@ class Timeline extends React.Component<TimelineType, State> {
 }
 
 /*  Functional alternative
-const Timeline: React.SFC<TimelineType> = ({ currentTime }) => {
+const Visual: React.SFC<VisualType> = ({ currentTime }) => {
 
   const containerRef = useRef(document.createElement('div'));
   const visual = (containerRef && containerRef.current.getBoundingClientRect()) || { width: 0, height: 0 };
@@ -75,4 +75,4 @@ const Timeline: React.SFC<TimelineType> = ({ currentTime }) => {
 }
 */
 
-export default Timeline;
+export default Visual;

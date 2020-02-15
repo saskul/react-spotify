@@ -1,2 +1,11 @@
+@import '../../globals/themes';
+
+
 .playlist {
+  background-color: black;
+  width: 100%;
+  height: 100%;
+  @include winamp_theme() {
+    color: var(--green-color);
+  }
 }

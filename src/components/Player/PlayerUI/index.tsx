@@ -1,12 +1,12 @@
 import React from 'react';
 import Controls, { ControlsType } from './Controls';
-import Timeline, { TimelineType } from './Timeline';
+import Visual, { VisualType } from './Visual';
 import Slider, { SliderType } from './Slider';
 import SliderMini, { SliderMiniType } from './SliderMini';
 import Info, { InfoType } from './Info';
 import "./PlayerUI.scss";
 
-interface PlayerUIType extends ControlsType, TimelineType, SliderType, SliderMiniType, InfoType {
+interface PlayerUIType extends ControlsType, VisualType, SliderType, SliderMiniType, InfoType {
   track?: any,
   duration?: number,
   status: string,
@@ -30,7 +30,7 @@ const PlayerUI: React.SFC<PlayerUIType> = ({
     <div className="player-ui grid --column">
       <div className="grid__row --no-border">
         <div className="grid__column --no-border" style={{ 'width': 'max-content', 'height': 'max-content' }}>
-          <Timeline currentTime={currentTime} status={status} />
+          <Visual currentTime={currentTime} status={status} />
         </div>
         <div className="grid__column --no-border">
           <div className="grid__row --no-border">
