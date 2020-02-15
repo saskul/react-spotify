@@ -6,7 +6,7 @@ import './Player.scss';
 type Props = {};
 type State = {
   selectedTrack?: string | null,
-  player: string | null,
+  status: string,
   currentTime?: string | null,
   duration?: number | null
 };
@@ -30,17 +30,22 @@ class Player extends React.Component<Props, State> {
     super(props);
     this.state = {
       selectedTrack: null,
-      player: "stopped",
+      status: "stopped",
       currentTime: null,
       duration: null
     };
   }
 
   componentDidMount() {
+    this.player.addEventListener('ended', e => {
+        this.setState({ status: 'stopped' });
+    }, false);
     this.player.addEventListener("timeupdate", e => {
+      const currentTime = e.target.currentTime;
+      const duration = e.target.duration;
       this.setState({
-        currentTime: e.target.currentTime,
-        duration: e.target.duration
+        currentTime,
+        duration
       });
     });
   }
@@ -65,28 +70,28 @@ class Player extends React.Component<Props, State> {
       if (track) {
         this.player.src = track;
         this.player.play();
-        this.setState({ player: "playing", duration: this.player.duration });
+        this.setState({ status: "playing", duration: this.player.duration });
       }
     }
-    if (this.state.player !== prevState.player) {
-      if (this.state.player === "paused") {
+    if (this.state.status !== prevState.status) {
+      if (this.state.status === "paused") {
         this.player.pause();
-      } else if (this.state.player === "stopped") {
+      } else if (this.state.status === "stopped") {
         this.player.pause();
         this.player.currentTime = 0;
         this.setState({ selectedTrack: null });
       } else if (
-        this.state.player === "playing" &&
-        prevState.player === "paused"
+        this.state.status === "playing" &&
+        prevState.status === "paused"
       ) {
         this.player.play();
       }
     }
   }
 
-  handlePlay = () => this.setState({ player: "playing" });
-  handlePause = () => this.setState({ player: "paused" });
-  handleStop = () => this.setState({ player: "stopped" });
+  handlePlay = () => this.setState({ status: "playing" });
+  handlePause = () => this.setState({ status: "paused" });
+  handleStop = () => this.setState({ status: "stopped" });
 
 
   render() {
@@ -116,8 +121,9 @@ class Player extends React.Component<Props, State> {
           onClickStop={this.handleStop}
           onClickNext={() => console.log('next')}
           currentTime={currentTime}
-          duration={duration} />
-        {this.state.player === "playing" || this.state.player === "paused" ? (
+          duration={duration}
+          status={this.state.status} />
+        {this.state.status === "playing" || this.state.status === "paused" ? (
           <div>
             {currentTime} / {duration}
           </div>

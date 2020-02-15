@@ -1,25 +1,46 @@
 @import '../../../../globals/themes';
 
 .timeline {
-  width: 80px;
+  width: 100%;
   max-height: 80px;
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
   background-color: black;
+  @include winamp_theme() {
+    border: 2px solid map-get($bg, 3);
+    border-width: 0px 2px 2px 0px;
+  }
   .timeline__clock {
     height: max-content;
     text-align: right;
-    padding: 2px 6px;
+    padding: 0px 8px;
     @include winamp_theme() {
       color: var(--green-color);
       font-size: 28px;
       text-shadow: none;
-      line-height: 32px;
+      line-height: 28px;
       vertical-align: top;
     }
   }
+  .timeline__arrow {
+    display: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+    transition: opacity 0.4s;
+    &.visible {
+      opacity: 1;
+    }
+    @include winamp_theme() {
+      color: var(--green-color);
+      font-size: 15px;
+      width: 100%;
+      text-align: left;
+      padding: 0px 8px;
+    }
+  }
   .timeline__visual {
-    height: inherit;
+    margin-top: -2px;
   }
 }

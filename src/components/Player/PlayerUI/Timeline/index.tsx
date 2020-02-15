@@ -3,7 +3,8 @@ import AudioSpectrum from 'react-audio-spectrum';
 import './Timeline.scss';
 
 export type TimelineType = {
-  currentTime?: string
+  currentTime?: string,
+  status: string
 };
 
 export type State = {
@@ -32,12 +33,15 @@ class Timeline extends React.Component<TimelineType, State> {
   }
 
   render() {
-    const { currentTime } = this.props;
+    const { currentTime, status } = this.props;
     const { visualDims, meterCount, meterWidth, gap, capHeight } = this.state;
     return (
       <div className="timeline" ref={this.containerRef}>
+        <div className={`timeline__arrow ${status === 'playing' ? 'visible' : ''}`}>
+          ➤
+        </div>
         <div className="timeline__clock --open-24-font">
-          {currentTime || '00:00'}
+          {currentTime || '0:00'}
         </div>
         <div className="timeline__visual">
           <AudioSpectrum

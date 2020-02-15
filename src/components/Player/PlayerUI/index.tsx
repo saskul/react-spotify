@@ -5,17 +5,18 @@ import "./PlayerUI.scss";
 
 interface PlayerUIType extends ControlsType, TimelineType {
   track?: any,
-  duration?: string
+  duration?: string,
+  status: string
 }
 
 const PlayerUI: React.SFC<PlayerUIType> = ({
-  onClickPrev, onClickPlay, onClickPause, onClickStop, onClickNext, track, currentTime, duration
+  onClickPrev, onClickPlay, onClickPause, onClickStop, onClickNext, track, currentTime, duration, status
 }) => {
   return (
     <div className="player-ui grid --column">
       <div className="grid__row --no-border">
         <div className="grid__column --no-border" style={{ 'width': 'max-content' }}>
-          <Timeline currentTime={currentTime} />
+          <Timeline currentTime={currentTime} status={status} />
         </div>
         <div className="grid__column --no-border">
           <div className="grid__row --no-border">
