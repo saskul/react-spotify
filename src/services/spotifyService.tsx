@@ -16,3 +16,12 @@ export function getTracks({ token, uri }) {
   })
   .then(response => response.data);
 }
+
+
+export function getTrack({ token, id }) {
+  return axios({
+      url: `${process.env.REACT_APP_SPOTIFY_API}/tracks/${id}`,
+      headers: getHeaders(token['access_token'])
+  })
+  .then(response => response.data);
+}

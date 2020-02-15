@@ -1,8 +1,10 @@
 import React, { Fragment } from 'react';
+import About from '../About';
 import text from '../../globals/text';
 import './Layout.scss';
 
 const ENOUGH_TIME_FOR_EQUALIZER = false;
+const ENOUGH_TIME_FOR_PLAYLIST = false;
 
 type Props = {
   TopBar: React.ReactNode,
@@ -41,12 +43,12 @@ class Layout extends React.Component<Props, State> {
             <div className="grid__row --collapsed-height --no-border --padded">
               <div className="line-through" />
               <div>
-                <h2><b>{text.playlist}</b></h2>
+                <h2><b>{ENOUGH_TIME_FOR_PLAYLIST ? 'Playlist' :'Readme'}</b></h2>
               </div>
               <div className="line-through" />
             </div>
             <div className="grid__row">
-              {Playlist}
+              {ENOUGH_TIME_FOR_PLAYLIST ? Playlist : <About />}
             </div>
             {ENOUGH_TIME_FOR_EQUALIZER && (
              <Fragment>

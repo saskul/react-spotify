@@ -1,19 +1,19 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import PlayerUI from './PlayerUI';
 import distant_cough from '../../static/distant_cough.mp3';
 import './Player.scss';
 
 type Props = {};
 type State = {
-  selectedTrack?: string | null,
+  id?: string | null,
+  href?: string,
   status: string,
   currentTime?: number,
   duration?: number,
-  info: string
+  info: string,
+  name?: string
 };
-
-const campfireStory = distant_cough;
-const bootingUp = distant_cough;
 
 export function getTime(time) {
   if (!isNaN(time)) {
@@ -29,15 +29,18 @@ class Player extends React.Component<Props, State> {
   constructor(props) {
     super(props);
     this.state = {
-      selectedTrack: null,
+      id: null,
+      href: '',
       status: "stopped",
       currentTime: 0,
       duration: 0,
-      info: ''
+      info: '',
+      name: ''
     };
   }
 
   componentDidMount() {
+    this.player.crossOrigin = "anonymous";
     this.player.addEventListener('ended', e => {
         this.setState({ status: 'paused' });
     }, false);
@@ -55,35 +58,40 @@ class Player extends React.Component<Props, State> {
     this.player.removeEventListener("timeupdate", () => {});
   }
 
+  static getDerivedStateFromProps(nextProps, nextState) {
+    if (nextProps.track && (nextProps.track.id !== nextState.id)) {
+      return {
+        status: "playing",
+        id: nextProps.track.id,
+        name: nextProps.track.name,
+        href: nextProps.track.preview_url
+      };
+    }
+    return nextState;
+  }
+
   componentDidUpdate(prevProps, prevState) {
-    if (this.state.selectedTrack !== prevState.selectedTrack) {
-      let track;
-      switch (this.state.selectedTrack) {
-        case "Campfire Story":
-          track = campfireStory;
-          break;
-        case "Booting Up":
-          track = bootingUp;
-          break;
-        default:
-          break;
-      }
-      if (track) {
-        this.player.src = track;
+    const { href, id } = this.state;
+
+    if (id !== prevState.id) {
+      if (href) {
+        this.player.src = href;
+        this.setState({ status: "playing", duration: this.player.duration, info: this.state.name || '' });
         this.player.play();
-        this.setState({ status: "playing", duration: this.player.duration });
       }
     }
+    console.log(this.state.status, prevState.status)
     if (this.state.status !== prevState.status) {
       if (this.state.status === "paused") {
         this.player.pause();
       } else if (this.state.status === "stopped") {
         this.player.pause();
         this.player.currentTime = 0;
-        this.setState({ selectedTrack: null });
+        this.setState({ id: null, currentTime: 0 });
       } else if (
         this.state.status === "playing"
       ) {
+        this.player.currentTime = 0;
         this.player.play();
       }
     }
@@ -105,20 +113,6 @@ class Player extends React.Component<Props, State> {
 
 
   render() {
-    const list = [
-      { id: 1, title: "Campfire Story" },
-      { id: 2, title: "Booting Up" }
-    ].map(item => {
-      return (
-        <li
-          key={item.id}
-          onClick={() => this.setState({ selectedTrack: item.title, status: "playing" })}
-        >
-          {item.title}
-        </li>
-      );
-    });
-
     return (
       <div style={{ width: '100%', height: '100%', display: 'flex', flexDirection: 'column' }}>
         <PlayerUI
@@ -133,19 +127,14 @@ class Player extends React.Component<Props, State> {
           duration={this.state.duration}
           status={this.state.status}
           info={this.state.info} />
-        {this.state.status === "playing" || this.state.status === "paused" ? (
-          <div>
-            {getTime(this.state.currentTime)} / {getTime(this.state.duration)}
-          </div>
-        ) : (
-          ""
-        )}
-                {list}
-
         <audio id="player" ref={ref => (this.player = ref)} />
       </div>
     );
   }
 }
 
-export default Player;
+const mapStateToProps = (state) => ({
+  track: state.spotify.playlist && state.spotify.playlist[0]
+});
+
+export default connect(mapStateToProps)(Player);

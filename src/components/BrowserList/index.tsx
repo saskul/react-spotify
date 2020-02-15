@@ -58,7 +58,7 @@ class BrowserList extends React.Component<Props, State> {
       <Scrollbar vertical={true}>
         <div className="browser-list">
           <ul>
-            {this.props.playlists && this.props.playlists.items.map((item, i) => (
+            {this.props.playlists.items && this.props.playlists.items.map((item, i) => (
               <ListItem
                 id={item.id}
                 key={item.id}
