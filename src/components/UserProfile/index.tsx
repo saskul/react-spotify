@@ -33,7 +33,7 @@ class UserProfile extends React.Component<Props, State> {
             </tr>
             <tr>
               <th>Spotify</th>
-              <td><a target="_blank" href={spotifyLink}>https://open.spotify.com/user</a></td>
+              <td><a rel="noopener noreferrer" target="_blank" href={spotifyLink}>https://open.spotify.com/user</a></td>
             </tr>
 
           </tbody>
