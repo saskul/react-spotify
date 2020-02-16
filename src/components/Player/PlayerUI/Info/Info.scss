@@ -12,23 +12,56 @@
     position: relative;
     height: 13px;
     overflow: hidden;
-  }
 
-  .info__content {
-    position: absolute;
-    animation: slide-left 20s;
-    animation-iteration-count: infinite;
-    animation-timing-function: linear;
-    right: 0px;
-    width: 100%;
-    text-align: left;
 
-    @keyframes slide-left {
+    &.link {
+      .info__link__arrow {
+        color: var(--green-color);
+        //font-size: 15px;
+        //width: 100%;
+        text-align: left;
+        padding: 0px 8px;
+        padding-right: 10px;
+        display: inline;
+        opacity: 0;
+        transition: opacity 0.2s;
+        &.visible {
+          opacity: 1;
+        }
+      }
+    }
+
+    &.--stopped {
+      .info__content {
+        animation-play-state: paused;
+      }
+    }
+
+    &.--paused {
+      .info__content {
+        animation-play-state: paused;
+      }
+    }
+
+    .info__content {
+      position: absolute;
+      animation: slide-left 20s;
+      animation-iteration-count: infinite;
+      animation-timing-function: linear;
+      right: 0px;
+      width: 100%;
+      text-align: left;
+
+     @keyframes slide-left {
       0% {
         right: -100%;
       } 100% {
         right: 100%;
-      }
+      }}
     }
   }
 }
+
+
+
+

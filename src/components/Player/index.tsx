@@ -1,9 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PlayerUI from './PlayerUI';
+import moment from 'moment';
 import './Player.scss';
 
-type Props = {};
+type Props = { track: any };
 type State = {
   id?: string | null,
   href?: string,
@@ -16,9 +17,17 @@ type State = {
 
 export function getTime(time) {
   if (!isNaN(time)) {
+    const t = moment.duration(time * 1000);
+    const seconds = t.seconds();
+    //const minutes = t.minutes();
+    //const hours = Math.trunc(moment.duration(time).asHours());
+    return `${(seconds < 10 ? '0' : '') + seconds}`;
+    //return `${(hours < 10 ? '0' : '') + hours}:${(minutes < 10 ? '0' : '') + minutes}:${(seconds < 10 ? '0' : '') + seconds}`;
+/*
     return (
       Math.floor(time / 60) + ":" + ("0" + Math.floor(time % 60)).slice(-2)
     );
+*/
   }
 }
 
@@ -75,22 +84,26 @@ class Player extends React.Component<Props, State> {
     if (id !== prevState.id) {
       if (href) {
         this.player.src = href;
-        this.setState({ status: "playing", duration: this.player.duration, info: this.state.name || '' });
+        this.setState({
+          status: "playing",
+          duration: this.player.duration,
+          info: `${this.state.name}: ${getTime(this.state.duration)}`,
+          currentTime: 0
+        });
+        this.player.currentTime = 0;
         this.player.play();
       }
     }
-    console.log(this.state.status, prevState.status)
     if (this.state.status !== prevState.status) {
       if (this.state.status === "paused") {
         this.player.pause();
       } else if (this.state.status === "stopped") {
         this.player.pause();
         this.player.currentTime = 0;
-        this.setState({ id: null, currentTime: 0 });
+        this.setState({ currentTime: 0 });
       } else if (
         this.state.status === "playing"
       ) {
-        this.player.currentTime = 0;
         this.player.play();
       }
     }
@@ -106,7 +119,6 @@ class Player extends React.Component<Props, State> {
     }
   }
   handleVolumeChange = (e) => {
-    console.log(e.target.value);
     this.player.volume = Number(e.target.value) / 100;
   }
 
@@ -125,7 +137,8 @@ class Player extends React.Component<Props, State> {
           currentTime={this.state.currentTime}
           duration={this.state.duration}
           status={this.state.status}
-          info={this.state.info} />
+          info={this.state.info}
+          track={this.props.track} />
         <audio id="player" ref={ref => (this.player = ref)} />
       </div>
     );

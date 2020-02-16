@@ -9,10 +9,17 @@
   display: block;
   overflow: hidden;
   border: 2px solid red;
-  background-color: black;
   @include winamp_theme() {
-    color: var(--green-color);
+    background-color: map-get($bg,2);
+    color: var(--font-color2);//var(--green-color);
+    text-shadow: none;
     border-color: map-get($bg, 2);
+  }
+
+  a {
+    font-size: 1.1em;
+    color: #BF6D1B;
+    letter-spacing: 1px;
   }
   ol {
     text-align: left;

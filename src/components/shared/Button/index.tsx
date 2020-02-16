@@ -12,7 +12,8 @@ import './Button.scss';
 
 type ButtonType = {
   onClick?: any,
-  type: string
+  type: string,
+  disabled?: boolean
 };
 
 interface ButtonStyleType extends CSS.Properties {}
@@ -39,16 +40,16 @@ const getImg = (type: string) => {
   }
 }
 
-const Button: React.SFC<ButtonType> = ({ onClick, type }) => {
+const Button: React.SFC<ButtonType> = ({ onClick, type, disabled }) => {
   const img = getImg(type);
   const btnStyle: ButtonStyleType = { width: img.width, height: img.height };
   return (
-    <button className="img" style={btnStyle}>
+    <button className="img" style={btnStyle} disabled={disabled}>
       <img
         className="button"
         alt="button"
         src={img.src}
-        onClick={onClick} />
+        onClick={(e) => !disabled && onClick(e)} />
     </button>
   );
 }

@@ -29,7 +29,7 @@ class Visual extends React.Component<VisualType, State> {
     const visualDims = (
       this.containerRef && this.containerRef.current.getBoundingClientRect()
     ) || { width: 0, height: 0 };
-    const meterCount = Math.floor(visualDims.width && visualDims.width / (meterWidth + gap)) || 0;
+    const meterCount = Math.floor(visualDims.width && visualDims.width / (meterWidth + 0.5 * gap)) || 0;
     this.setState({ visualDims, meterCount });
   }
 
@@ -38,24 +38,21 @@ class Visual extends React.Component<VisualType, State> {
     const { visualDims, meterCount, meterWidth, gap, capHeight } = this.state;
     return (
       <div className="timeline" ref={this.containerRef}>
-        <div className={`timeline__arrow ${status === 'playing' ? 'visible' : ''}`}>
-          ➤
-        </div>
         <div className="timeline__clock --open-24-font">
-          {getTime(currentTime) || '0:00'}
+          {getTime(currentTime)}
         </div>
         <div className="timeline__visual">
           <AudioSpectrum
             audioId="player"
-            height={visualDims.height - 50}
+            height={visualDims.height}
             width={visualDims.width}
             capHeight={capHeight}
             meterWidth={meterWidth}
             meterCount={meterCount}
             meterColor={[
-              {stop: 0, color: 'green'},
-              {stop: 0.5, color: 'yellow'},
-              {stop: 1, color: 'red'}
+              {stop: 0.1, color: 'green'},
+              {stop: 0.2, color: 'yellow'},
+              {stop: 0.3, color: 'red'}
             ]}
             gap={gap} />
         </div>

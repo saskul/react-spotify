@@ -19,12 +19,26 @@ $bg-gradient: linear-gradient(
   map-get($bg, 1) 100%,
 );
 
+$bg-gradient2: linear-gradient(
+  to bottom right,
+  map-get($bg, 2) 10%,
+  map-get($bg, 1) 50%,
+  map-get($bg, 2) 100%,
+);
+
+
 .winamp {
   --font-color: #DCE6EA;
-  --font-color2: #44465C;
+  --font-color2: #74769C;
   --green-color: #29CF28;
   --bg-1-color: #{map-get($bg, 1)};
   --bg-2-color: map-get($bg, 2);
+
+  a {
+    //color: #8D5D48;
+    color: var(--green-color);
+  }
+
 
   color: #DCE6EA;
   font-size: 11px;

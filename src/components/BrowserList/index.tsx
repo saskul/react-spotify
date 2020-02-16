@@ -7,16 +7,44 @@ import './BrowserList.scss';
 
 const CHAR_LIMIT = 20;
 
+// TO-DO: REFACTOR! WORK HAS GONE TOO FAR!!!
+
 type Props = {
+  onClick?: any,
+  name?: string,
+  description?: string,
+  onTrackClick?: typeof spotifyActions.getTrack,
+  index?: number,
+  type?: string,
+  id?: string,
+  trackList?: any,
   token?: any,
   playlists?: any,
   tracks?: any,
-  getTracks: typeof spotifyActions.getTracks,
-  setDetails: typeof spotifyActions.setDetails
+  getTracks?: typeof spotifyActions.getTracks,
+  setDetails?: typeof spotifyActions.setDetails,
+  getTrack?: typeof spotifyActions.getTrack
 };
 type State = {};
 
-const ListItem = ({ onClick, name, description, setDetails, index='', type='', tracks=[], id='', trackList=[] }) => {
+const ListItem: React.SFC<Props> = ({
+  onClick,
+  name='',
+  description,
+  setDetails,
+  onTrackClick,
+  token,
+  index='',
+  type='',
+  tracks=[],
+  id='',
+  trackList=[]
+}) => {
+  const handleListItemClick = (track, token) => {
+    typeof setDetails === 'function' && setDetails({ details: track });
+    typeof onTrackClick === 'function' && onTrackClick({ id: track.id, token });
+  };
+
   const [isOpen, setOpen] = useState(false);
   return (
     <Fragment>
@@ -25,7 +53,7 @@ const ListItem = ({ onClick, name, description, setDetails, index='', type='', t
         className="--no-select"
         data-type={type}
         onClick={() => {
-          onClick(id, tracks['href'], description);
+          typeof onClick === 'function' && onClick(id, tracks['href'], description);
           setOpen(!isOpen);
         }}>
         {type !== 'header' && index + '. '}{name.length > CHAR_LIMIT ? name.slice(0, CHAR_LIMIT) + '...' : name}
@@ -35,11 +63,11 @@ const ListItem = ({ onClick, name, description, setDetails, index='', type='', t
           {trackList[id].items.map((item, index) => (
             <ListItem
               key={uid(item)}
-              onClick={() => setDetails({ details: item.track })}
               name={item.track.name}
               description={`${item.album} ${item.artists && item.artists[0] && item.artists[0].name}`}
               setDetails={setDetails}
-              index={index} />
+              index={index}
+              onClick={() => typeof handleListItemClick === 'function' && handleListItemClick(item.track, token)} />
           ))}
         </ul>
       )}
@@ -49,9 +77,11 @@ const ListItem = ({ onClick, name, description, setDetails, index='', type='', t
 }
 
 class BrowserList extends React.Component<Props, State> {
-  handlePlaylistClick = (id, uri, description) => {
-    this.props.getTracks({ uri, token: this.props.token, id });
-    this.props.setDetails({ details: description });
+  handlePlaylistClick = (id, uri, description, isTrack=false) => {
+    const { token, getTrack, getTracks, setDetails } = this.props;
+    typeof getTracks === 'function' && getTracks({ uri, token, id });
+    typeof setDetails === 'function' && setDetails({ details: description });
+    typeof getTrack === 'function' && getTrack({ id, token });
   }
   render() {
     return (
@@ -69,7 +99,9 @@ class BrowserList extends React.Component<Props, State> {
                 tracks={item.tracks}
                 trackList={this.props.tracks}
                 onClick={this.handlePlaylistClick}
-                setDetails={this.props.setDetails} />
+                setDetails={this.props.setDetails}
+                token={this.props.token}
+                onTrackClick={this.props.getTrack} />
             ))}
           </ul>
         </div>
@@ -86,7 +118,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = {
   setDetails: spotifyActions.setDetails,
-  getTracks: spotifyActions.getTracks
+  getTracks: spotifyActions.getTracks,
+  getTrack: spotifyActions.getTrack
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(BrowserList);

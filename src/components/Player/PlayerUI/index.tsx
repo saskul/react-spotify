@@ -9,7 +9,7 @@ import "./PlayerUI.scss";
 interface PlayerUIType extends ControlsType, VisualType, SliderType, SliderMiniType, InfoType {
   track?: any,
   duration?: number,
-  status: string,
+  status: string
 }
 
 const PlayerUI: React.SFC<PlayerUIType> = ({
@@ -29,14 +29,14 @@ const PlayerUI: React.SFC<PlayerUIType> = ({
   return (
     <div className="player-ui grid --column">
       <div className="grid__row --no-border">
-        <div className="grid__column --no-border" style={{ 'width': 'max-content', 'height': 'max-content' }}>
+        <div className="grid__column --no-border" style={{ 'width': '112px', 'height': 'max-content' }}>
           <Visual currentTime={currentTime} status={status} />
         </div>
         <div className="grid__column --no-border">
-          <div className="grid__row --no-border">
-            <Info />
+          <div className="grid__row --no-border --no-shadow">
+            <Info track={track} info={info} status={status} />
           </div>
-          <div className="grid__column --no-border" style={{ alignItems: 'flex-start' }}>
+          <div className="grid__column --no-border --no-shadow" style={{ alignItems: 'flex-start' }}>
              <SliderMini onVolumeChange={onVolumeChange} />
           <h4>Volume</h4>
           </div>
@@ -51,7 +51,8 @@ const PlayerUI: React.SFC<PlayerUIType> = ({
           onClickPlay={onClickPlay}
           onClickPause={onClickPause}
           onClickStop={onClickStop}
-          onClickNext={onClickNext} />
+          onClickNext={onClickNext}
+          disabled={track && !track.id}/>
       </div>
     </div>
   );

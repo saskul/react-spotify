@@ -7,16 +7,24 @@ export type ControlsType = {
   onClickPause?: any,
   onClickStop?: any,
   onClickNext?: any,
+  disabled?: boolean
 };
 
-const Controls: React.SFC<ControlsType> = ({ onClickPrev, onClickPlay, onClickPause, onClickStop, onClickNext }) => {
+const Controls: React.SFC<ControlsType> = ({
+  onClickPrev,
+  onClickPlay,
+  onClickPause,
+  onClickStop,
+  onClickNext,
+  disabled
+}) => {
   return (
     <Fragment>
-      <Button type="btn_prev" onClick={onClickPrev} />
-      <Button type="btn_play" onClick={onClickPlay} />
-      <Button type="btn_pause" onClick={onClickPause} />
-      <Button type="btn_stop" onClick={onClickStop} />
-      <Button type="btn_next" onClick={onClickNext} />
+      <Button disabled={disabled} type="btn_prev" onClick={onClickPrev} />
+      <Button disabled={disabled} type="btn_play" onClick={onClickPlay} />
+      <Button disabled={disabled} type="btn_pause" onClick={onClickPause} />
+      <Button disabled={disabled} type="btn_stop" onClick={onClickStop} />
+      <Button disabled={disabled} type="btn_next" onClick={onClickNext} />
     </Fragment>
   );
 }
