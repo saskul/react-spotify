@@ -7,7 +7,7 @@ type State = {};
 class UserProfile extends React.Component<Props, State> {
   render() {
     return (
-      <div>UserProfile</div>
+      <div className="user-profile">UserProfile</div>
     );
   }
 }
