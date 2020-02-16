@@ -12,7 +12,7 @@ issues).
 - [ ] Add at least one UI test for a happy path related scenario.
 - [X] It must be possible to run the app by doing just yarn &amp;&amp; yarn start (of course,
 you can use npm install &amp;&amp; npm start).
-- [ ] ***Implement separate “User profile” screen (details to display are free of choice) and
+- [X] ***Implement separate “User profile” screen (details to display are free of choice) and
 apply routing to the application.***
 
 ## Dependencies
