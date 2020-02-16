@@ -1,4 +1,5 @@
 import React from 'react';
+import Logo from '../../static/logo.png';
 import './About.scss';
 
  type Props = {};
@@ -21,7 +22,7 @@ class About extends React.Component<Props,State> {
         target="_blank"
         href="https://github.com/otherutterotter/react-spotify">https://github.com/otherutterotter/react-spotify</a>
       <br />
-      <br />
+      <img src={Logo} className="about__logo"/>
       <br />
       Browse your Spotify playlists in a Winamp look-a-like. Enjoy! :)
       <br />

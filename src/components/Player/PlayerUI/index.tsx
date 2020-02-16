@@ -33,9 +33,10 @@ const PlayerUI: React.SFC<PlayerUIType> = ({
           <Visual currentTime={currentTime} status={status} />
         </div>
         <div className="grid__column --no-border">
-          <div className="grid__row --no-border --no-shadow">
+          <div className="grid__row --no-border --no-shadow" style={{ 'height': 'max-content' }}>
             <Info track={track} info={info} status={status} />
           </div>
+          <div style={{ flexGrow: 2, width: '100%', height: '100%' }} />
           <div className="grid__column --no-border --no-shadow" style={{ alignItems: 'flex-start' }}>
              <SliderMini onVolumeChange={onVolumeChange} />
           <h4>Volume</h4>

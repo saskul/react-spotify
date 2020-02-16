@@ -16,6 +16,13 @@
     border-color: map-get($bg, 2);
   }
 
+  .about__logo {
+    width: 64px;
+    height: 64px;
+    padding: 20px;
+    opacity: 0.75;
+  }
+
   a {
     font-size: 1.1em;
     color: #BF6D1B;
