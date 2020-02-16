@@ -26,7 +26,7 @@ type State = {};
 class TopBar extends React.Component<Props & RouteComponentProps, State> {
   render() {
   const { history, username } = this.props;
-  const userPath = '/user';
+  const userPath = '/profile';
   const pathname = history && (this.props.location as any).pathname;
   const label = pathname === userPath ? 'Return' : username || 'User';
   const to = pathname === userPath ? '/' : userPath;

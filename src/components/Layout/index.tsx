@@ -92,7 +92,7 @@ class Layout extends React.Component<Props, State> {
                   </div>
                 </div>
               </Route>
-              <Route path="/user">
+              <Route path="/profile">
                 <UserProfile />
               </Route>
             </Switch>
