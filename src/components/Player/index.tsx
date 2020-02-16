@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PlayerUI from './PlayerUI';
-import distant_cough from '../../static/distant_cough.mp3';
 import './Player.scss';
 
 type Props = {};

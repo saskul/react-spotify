@@ -15,10 +15,7 @@
     padding: 10px;
     min-width: 60px;
     text-align: left;
-  }
-}
-
-li {
+    li {
   cursor: pointer;
   display: inline-block;
   width: 100%;
@@ -56,3 +53,7 @@ li[data-type='header'] {
   margin: 4px;
   font-size: 12px;
 }
+
+  }
+}
+

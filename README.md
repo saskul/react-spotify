@@ -1,11 +1,9 @@
 # Winampify
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using `--template typescript`
 #### Goals:
-*Deadline: 12.02.2020 11:59 PM*
 - [X] Integrate application with Spotify Web API.
-- [ ] Apply styling as close as possible to Spotify.
-- [ ] ***Apply styling as close as possible to Winamp.***
-- [ ] Make content displayable and playable.
+- [X] ***Apply styling as close as possible to Winamp.***
+- [X] Make content displayable and playable.
 - [X] Apply application state (use either Redux library or similar or React mechanisms like
 Context API or hooks).
 - [ ] Visualise data loading states.
