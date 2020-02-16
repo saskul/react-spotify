@@ -1,2 +1,47 @@
-.user-profile {
+@import '../../globals/themes';
+
+.user-profile__wrapper {
+  // animation: fade-in 0.2s;
+  display: flex;
+  flex-direction: column;
+  padding: 0px 10px;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.5);
+  .user-profile {
+    padding: 10px 3px;
+    @include winamp_theme() {
+      color: var(--green-color);
+    }
+    background-color: black;
+    border-radius: 10px 0px 0px 10px;
+    tr {
+      width: 100%;
+      font-size: 12px;
+      border: 2px solid red;
+      height: 19px;
+
+      td {
+        @extend h3;
+        margin: 0px;
+        margin-right: 3px;
+        overflow: hidden;
+        text-align: left;
+        text-transform: none;
+        padding-left: 3px;
+      }
+      th {
+        display: inline-block;
+        width: 100%;
+        padding-top: 2px;
+        margin: 0px;
+        //@extend td;
+      }
+    }
+    p {
+      background-color: white;
+    }
+
+  }
 }
+

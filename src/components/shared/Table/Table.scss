@@ -9,6 +9,7 @@
     tr {
       text-align: inherit;
       td {
+        box-sizing: border-box;
         padding: 5px 10px;
         min-width: 100px;
         max-width: 100px;

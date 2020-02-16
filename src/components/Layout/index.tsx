@@ -37,6 +37,7 @@ class Layout extends React.Component<Props, State> {
     return (
       <div className="grid --column">
         <div className="grid__row --collapsed-height --no-border">{TopBar}</div>
+
         <div className="grid__row --no-border">
           <div className="grid__column --no-border">
             <div className="grid__row" style={{ height: 'fit-content' }}>
@@ -68,7 +69,7 @@ class Layout extends React.Component<Props, State> {
             )}
           </div>
 
-          <div className="grid__row --no-border">
+          <div className="grid__row --no-border" style={{ width: 'fit-content' }}>
             <Switch>
               <Route exact path="/">
                 <div className="grid__column" style={{ minWidth: '200px' }}>
@@ -91,7 +92,7 @@ class Layout extends React.Component<Props, State> {
                   </div>
                 </div>
               </Route>
-              <Route path="/users">
+              <Route path="/user">
                 <UserProfile />
               </Route>
             </Switch>
