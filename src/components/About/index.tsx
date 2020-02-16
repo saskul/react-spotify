@@ -20,9 +20,10 @@ class About extends React.Component<Props,State> {
       <br />
       <a
         target="_blank"
+        rel="noopener noreferrer"
         href="https://github.com/otherutterotter/react-spotify">https://github.com/otherutterotter/react-spotify</a>
       <br />
-      <img src={Logo} className="about__logo"/>
+      <img alt="Winampify" src={Logo} className="about__logo"/>
       <br />
       Browse your Spotify playlists in a Winamp look-a-like. Enjoy! :)
       <br />

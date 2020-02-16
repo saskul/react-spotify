@@ -78,10 +78,9 @@ const ListItem: React.SFC<Props> = ({
 
 class BrowserList extends React.Component<Props, State> {
   handlePlaylistClick = (id, uri, description, isTrack=false) => {
-    const { token, getTrack, getTracks, setDetails } = this.props;
+    const { token, getTracks, setDetails } = this.props;
     typeof getTracks === 'function' && getTracks({ uri, token, id });
     typeof setDetails === 'function' && setDetails({ details: description });
-    typeof getTrack === 'function' && getTrack({ id, token });
   }
   render() {
     return (

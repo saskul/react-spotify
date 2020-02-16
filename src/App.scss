@@ -31,3 +31,7 @@ body {
 .--open-24-font {
   font-family: open24;
 }
+
+@keyframes fade-in {
+  from { opacity: 0 } to { opacity: 1 };
+}

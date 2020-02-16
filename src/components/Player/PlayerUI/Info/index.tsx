@@ -24,11 +24,11 @@ const Info: React.SFC<InfoType> = ({ info, status, track }) => {
         }}>
           ➤
         </div>
-        <a href={spotify_url || '#'} target="_blank">{spotify_url || ''}</a>
+        <a rel="noopener noreferrer" href={spotify_url || '#'} target="_blank">{spotify_url || ''}</a>
       </div>
       <div className={`info ${status === 'stopped' && '--stopped'} ${status === 'paused' && '--paused'}`}>
         <div className="info__content">
-          {track && getInfoFromTrack(track) || info || ''}
+          {(track && getInfoFromTrack(track)) || info || ''}
         </div>
       </div>
     </Fragment>

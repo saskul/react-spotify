@@ -1,5 +1,7 @@
 import React, { Fragment } from 'react';
 import About from '../About';
+import UserProfile from '../UserProfile';
+import { Switch, Route } from 'react-router-dom';
 import text from '../../globals/text';
 import './Layout.scss';
 
@@ -35,6 +37,7 @@ class Layout extends React.Component<Props, State> {
     return (
       <div className="grid --column">
         <div className="grid__row --collapsed-height --no-border">{TopBar}</div>
+
         <div className="grid__row --no-border">
           <div className="grid__column --no-border">
             <div className="grid__row" style={{ height: 'fit-content' }}>
@@ -66,26 +69,33 @@ class Layout extends React.Component<Props, State> {
             )}
           </div>
 
-          <div className="grid__row --no-border">
-            <div className="grid__column" style={{ minWidth: '200px' }}>
-              {BrowserList}
-            </div>
-            <div className="grid__column">
-              <div className="grid__row">
-                <div className="grid__column">
-                  {Artist}
+          <div className="grid__row --no-border" style={{ width: 'fit-content' }}>
+            <Switch>
+              <Route exact path="/">
+                <div className="grid__column" style={{ minWidth: '200px' }}>
+                  {BrowserList}
                 </div>
                 <div className="grid__column">
-                  {Album}
+                  <div className="grid__row">
+                    <div className="grid__column">
+                      {Artist}
+                    </div>
+                    <div className="grid__column">
+                      {Album}
+                    </div>
+                  </div>
+                  <div className="grid__row --collapsed-height">
+                    {Search}
+                  </div>
+                  <div className="grid__row">
+                    {Details}
+                  </div>
                 </div>
-              </div>
-              <div className="grid__row --collapsed-height">
-                {Search}
-              </div>
-              <div className="grid__row">
-                {Details}
-              </div>
-            </div>
+              </Route>
+              <Route path="/user">
+                <UserProfile />
+              </Route>
+            </Switch>
           </div>
         </div>
       </div>

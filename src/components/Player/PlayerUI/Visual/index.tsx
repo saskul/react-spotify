@@ -34,7 +34,7 @@ class Visual extends React.Component<VisualType, State> {
   }
 
   render() {
-    const { currentTime, status } = this.props;
+    const { currentTime } = this.props;
     const { visualDims, meterCount, meterWidth, gap, capHeight } = this.state;
     return (
       <div className="timeline" ref={this.containerRef}>
