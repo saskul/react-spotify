@@ -62,4 +62,5 @@ const WrappedProductionApp = compose(
   withAuth
 )(App);
 
-export default withUIHelp(WrappedProductionApp, UIImg);
+export default WrappedProductionApp;
+// export default withUIHelp(WrappedProductionApp, UIImg);
