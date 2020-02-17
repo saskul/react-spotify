@@ -30,7 +30,7 @@ $bg-gradient2: linear-gradient(
 .winamp {
   --font-color: #DCE6EA;
   --font-color2: #74769C;
-  --green-color: #29CF28;
+    --green-color: #29CF28;
   --bg-1-color: #{map-get($bg, 1)};
   --bg-2-color: map-get($bg, 2);
 

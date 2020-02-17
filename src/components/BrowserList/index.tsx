@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { spotifyActions } from '../../actions';
 import { uid } from 'react-uid';
 import Scrollbar from '../shared/Scrollbar';
+import withLoading from '../shared/hoc/withLoading';
 import './BrowserList.scss';
 
 const CHAR_LIMIT = 20;
@@ -112,7 +113,7 @@ class BrowserList extends React.Component<Props, State> {
 const mapStateToProps = state => ({
   token: state.auth.token,
   playlists: state.spotify.playlists,
-  tracks: state.spotify.tracks
+  tracks: state.spotify.tracks,
 });
 
 const mapDispatchToProps = {
@@ -121,4 +122,4 @@ const mapDispatchToProps = {
   getTrack: spotifyActions.getTrack
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(BrowserList);
+export default connect(mapStateToProps, mapDispatchToProps)(withLoading(BrowserList, 'spotify'));
