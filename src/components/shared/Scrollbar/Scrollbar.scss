@@ -1,5 +1,5 @@
 @import '../../../globals/themes';
-
+/*
 @keyframes set-width {
   from { width: 0px; } to { width: 20px;}
 }
@@ -7,6 +7,7 @@
 @keyframes set-height {
   from { height: 0px; } to { height: 20px;}
 }
+*/
 
 .track-vertical {
   z-index: 1000;
@@ -17,6 +18,7 @@
   height: 100%;
   width: 20px;
   right: 0;
+
 }
 .thumb-vertical {
   z-index: 1000;
@@ -25,7 +27,7 @@
   height: 0px;
   border-radius: 2px;
   transition: height 0.4s ease-in-out;
-  animation: set-width 0.4s;
+  opacity: 1;
 }
 
 .thumb-horizontal {
@@ -35,7 +37,7 @@
   border-radius: 1px;
   cursor: pointer;
   transition: width 0.4s ease-in-out;
-  animation: set-height 0.4s forwards set-width 0.4s forwards;
+  opacity: 1;
 }
 
 .track-horizontal {
