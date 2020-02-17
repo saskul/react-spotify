@@ -134,6 +134,8 @@ API_AUTH_DEV              = 'https://winampify.com/api/auth/develop'
 ---
 
 ### Sources
+> - Using Spotify Web Api made available by [Spotify](https://www.spotify.com/pl/Spotify). 
+> - Based styling on the look of the [Winamp](https://www.winamp.com/).
 > - ``Open 24 Display ST`` font by [Southtype](https://www.dafont.com/south-type.d5515)
 > - The scss themes functionality was based on the tutorial made by [Jason McAffe](https://medium.com/@jasonlmcaffee/theming-with-react-and-sass-c7a6882fd26b).
 > - The react audio player was loosely based on the tutorial made by [Thomas Pikauli](https://dev.to/ma5ly/lets-make-a-little-audio-player-in-react-p4p)
