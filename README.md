@@ -64,12 +64,14 @@ PORT                      = 3000
 
 # SPOTIFY WEB API
 REACT_APP_SPOTIFY_WEB_API = 'https://accounts.spotify.com'
+REACT_APP_SPOTIFY_API     = 'https://api.spotify.com/v1'
 REACT_APP_CLIENT_ID       = $SPOTIFY_CLIENT_ID
 REACT_APP_CLIENT_SECRET   = $SPOTIFY_CLIENT_SECRET
 REACT_APP_WINAMPIFY_ROOT  = 'https://winampify.com'
 REACT_APP_WINAMPIFY       = 'https://winampify.com/api/auth'
 REACT_APP_WINAMPIFY_DEV   = 'https://winampify.com/api/auth/develop'
 REACT_APP_DISABLE_AUTH    = 'true' # any other value enables auth
+REACT_APP_UI_HELP         = 'true'
 
 SPOTIFY_WEB_API           = 'https://accounts.spotify.com/authorize'
 SPOTIFY_CLIENT_ID         = $SPOTIFY_CLIENT_ID
