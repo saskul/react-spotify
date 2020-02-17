@@ -6,7 +6,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 - [X] Make content displayable and playable.
 - [X] Apply application state (use either Redux library or similar or React mechanisms like
 Context API or hooks).
-- [ ] Visualise data loading states.
+- [X] Visualise data loading states.
 - [ ] Add unit tests (no need to apply coverage for edge cases, focus on main possible
 issues).
 - [ ] Add at least one UI test for a happy path related scenario.
