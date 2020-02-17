@@ -76,7 +76,7 @@ class Layout extends React.Component<Props, State> {
                   {BrowserList}
                 </div>
                 <div className="grid__column">
-                  <div className="grid__row">
+                  <div className="grid__row" style={{ minWidth: '300px' }}>
                     <div className="grid__column">
                       {Artist}
                     </div>

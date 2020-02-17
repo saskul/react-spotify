@@ -22,6 +22,7 @@
     @include winamp_theme() {
       border: 1px solid map-get($bg, 3);
     }
+    margin-right: 10px;
   }
   label {
     height: 100%;
